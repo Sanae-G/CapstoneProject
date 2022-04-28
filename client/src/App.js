@@ -1,23 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [users, setUsers] = useState([]);
+  let [moments, setMoments] = useState(null);
 
-  function fetchSomething() {
+  useEffect(() => {
     fetch('/api')
       .then(res => res.json())
-      .then(data => setUsers(data));
-  }
+      .then(data => setMoments(data));
+  }, [])
+
+
 
   return (
     <div className="App">
-      <h1>Users</h1>
-      <button onClick={fetchSomething}>Fetch users</button>
+      <h1>Moments</h1>
       <ul>
-        {users.map(user => (
-          <li key={user.id}>{user.title}</li>
-        ))}
+        {moments && moments.map((moment) =>
+          <li key={moment.id}>{moment.title}</li>
+        )}
       </ul>
     </div>
   );
