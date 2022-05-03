@@ -4,23 +4,24 @@ import { P2,
     TagBox, Tag, DateBox, PlaceBox} from './PostCard.styles';
 import AdressIcon from '../../icons/adress';
 
-function PostCard() {
+function PostCard({moments}) {
 
     return (
-        <>
-        <Container>
+        <ul>
+        {moments && moments.map((moment) => (
+            <Container>
             <DateBox>
                 <div></div>
                 <h2>2. April</h2>
                 <div></div>
             </DateBox>
-        <P2>Thursday</P2>
-        <h3>My Henna Tattoo</h3>
-        <img src={henna} alt="henna" />
-        <TextBox>
+            <P2>Thursday</P2>
+            <h3>My Henna Tattoo</h3>
+            <img src={henna} alt="henna" />
+            <TextBox>
             <p>Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.</p>
-        </TextBox>
-        <TagBox>
+            </TextBox>
+            <TagBox>
             <li>
             <Tag bg='#E6F3C1'><p>henna</p></Tag>
             </li>
@@ -30,12 +31,13 @@ function PostCard() {
             <li>
             <Tag bg='#E6F3C1'><p>tattoo</p></Tag>
             </li>
-        </TagBox>
-        <PlaceBox>
-             <AdressIcon /><p>Ras Al Hanut 33, Casablanca</p>
-        </PlaceBox>
-        </Container>
-        </>
+            </TagBox>
+            <PlaceBox>
+            <AdressIcon /><p>Ras Al Hanut 33, Casablanca</p>
+            </PlaceBox>
+            </Container>
+        ))}
+        </ul>
     );
   }
   

@@ -16,7 +16,7 @@ function JournalPage() {
   return (
       <>
       <JournalHeader />
-      <PostCard />
+      <PostCard moments = {moments}/>
       </>
     // <div className="App">
     //   <h1>Moments</h1>
