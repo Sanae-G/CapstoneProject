@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// PostCard Styles
-
 export const Header = styled.header`
 background-color: ${({color}) => color};
 margin: 0;

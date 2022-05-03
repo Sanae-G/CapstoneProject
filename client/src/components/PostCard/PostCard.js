@@ -1,8 +1,8 @@
-import henna from '../image/henna.png';
+import henna from '../../images/henna.png';
 import { P2, 
     TextBox, Container,
-    TagBox, Tag, DateBox, PlaceBox} from './PostCard.styles.js';
-import AdressIcon from '../icons/adress';
+    TagBox, Tag, DateBox, PlaceBox} from './PostCard.styles';
+import AdressIcon from '../../icons/adress';
 
 function PostCard() {
 

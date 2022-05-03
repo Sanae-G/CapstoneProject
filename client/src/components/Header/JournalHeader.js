@@ -1,4 +1,4 @@
-import { Header } from './PostCard.styles.js';
+import { Header } from '../Postcard/PostCard.styles';
 
 function JournalHeader({color = '#FFD6BA', heading = 'Crazy Trip to Morocoo', period = '01.04 - 10.04.2022'}) {
 
