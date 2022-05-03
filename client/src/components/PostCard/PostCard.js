@@ -1,7 +1,7 @@
 import henna from '../../images/henna.png';
 import { P2, 
     TextBox, Container,
-    TagBox, Tag, DateBox, PlaceBox} from './PostCard.styles';
+    TagBox, Tag, DateBox, PlaceBox, Section, FlexBox} from './PostCard.styles';
 import AdressIcon from '../../icons/adress';
 
 function PostCard({moments}) {
@@ -9,32 +9,36 @@ function PostCard({moments}) {
     return (
         <ul>
         {moments && moments.map((moment) => (
-            <Container>
+            <Container key={moment.id}>
             <DateBox>
                 <div></div>
-                <h2>2. April</h2>
+                <h2>{moment.date}</h2>
                 <div></div>
             </DateBox>
-            <P2>Thursday</P2>
-            <h3>My Henna Tattoo</h3>
+            <P2>{moment.day}</P2>
+            <h3>{moment.title}</h3>
             <img src={henna} alt="henna" />
             <TextBox>
-            <p>Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.</p>
+            <p>{moment.text}</p>
             </TextBox>
-            <TagBox>
-            <li>
-            <Tag bg='#E6F3C1'><p>henna</p></Tag>
-            </li>
-            <li>
-            <Tag bg='#BEE48E'><p>beauty</p></Tag>
-            </li>
-            <li>
-            <Tag bg='#E6F3C1'><p>tattoo</p></Tag>
-            </li>
-            </TagBox>
+            <FlexBox>
+            <Section >
+                <TagBox>
+                <li>
+                <Tag bg='#E6F3C1'><p>{moment.tag1}</p></Tag>
+                </li>
+                <li>
+                <Tag bg='#BEE48E'><p>{moment.tag2}</p></Tag>
+                </li>
+                <li>
+                <Tag bg='#E6F3C1'><p>{moment.tag3}</p></Tag>
+                </li>
+                </TagBox>
+            </Section>
             <PlaceBox>
-            <AdressIcon /><p>Ras Al Hanut 33, Casablanca</p>
+                <AdressIcon /><p>{moment.address}</p>
             </PlaceBox>
+            </FlexBox>
             </Container>
         ))}
         </ul>

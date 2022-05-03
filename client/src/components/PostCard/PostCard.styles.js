@@ -61,7 +61,7 @@ border-bottom: 1px solid #DBDBDB;
 
 export const Container = styled.div`
 margin: 0 7%;
-margin-bottom: 9rem;
+margin-bottom: 4rem;
 
 h3{
     text-align: center;
@@ -85,15 +85,15 @@ width: 100%;
 height: 3rem;
 list-style: none;
 display: flex;
-justify-content: space-evenly;
-gap: 1.5rem;
+justify-content: center;
 margin-top: 1rem;
+flex-wrap: wrap;
+gap: 0.9rem;
 `;
 
 
 export const Tag = styled.div`
-padding-top: 0.2rem;
-width: 5rem;
+padding: 0.2rem 1.1rem 0 1.1rem;
 height: 2rem;
 background-color: ${(props) => props.bg};
 border-radius: 8px;
@@ -110,6 +110,15 @@ export const PlaceBox = styled.div`
     gap: 1.5rem;
 `;
 
+export const Section = styled.section`
+   display: block;
+`;
+
+export const FlexBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`;
 
 
 
