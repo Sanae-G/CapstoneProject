@@ -1,6 +1,6 @@
 import { P2, 
     TextBox, Container,
-    TagBox, Tag, DateBox, PlaceBox, Section, FlexBox} from './PostCard.styles';
+    TagBox, Tag, DateBox, PlaceBox} from './PostCard.styles';
 import AdressIcon from '../../icons/adress';
 
 function PostCard({moments}) {
@@ -21,15 +21,11 @@ function PostCard({moments}) {
             <p>{moment.text}</p>
             </TextBox>
                 <TagBox>
-                <li>
-                <Tag bg='#E6F3C1'><p>{moment.tag1}</p></Tag>
+                {moment.tags && moment.tags.map((subtag) => (
+                <li key = {subtag.id}>
+                <Tag bg='#E6F3C1'><p>{subtag.tag}</p></Tag>
                 </li>
-                <li>
-                <Tag bg='#BEE48E'><p>{moment.tag2}</p></Tag>
-                </li>
-                <li>
-                <Tag bg='#E6F3C1'><p>{moment.tag3}</p></Tag>
-                </li>
+                ))}
                 </TagBox>
             <PlaceBox>
                 <AdressIcon /><p>{moment.address}</p>
