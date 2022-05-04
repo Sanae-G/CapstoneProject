@@ -1,6 +1,6 @@
 import { P2, 
     TextBox, Container,
-    TagBox, Tag, DateBox, PlaceBox} from './PostCard.styles';
+    TagBox, Tag, DateBox, PlaceBox, DecoLine} from './PostCard.styles';
 import AdressIcon from '../../icons/adress';
 
 function PostCard({moments}) {
@@ -10,9 +10,9 @@ function PostCard({moments}) {
         {moments && moments.map((moment) => (
             <Container key={moment.id}>
             <DateBox>
-                <div></div>
+            <DecoLine/>
                 <h2>{moment.date}</h2>
-                <div></div>
+            <DecoLine/>
             </DateBox>
             <P2>{moment.day}</P2>
             <h3>{moment.title}</h3>

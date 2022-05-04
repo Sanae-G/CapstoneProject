@@ -20,6 +20,12 @@ p{
 }
 `;
 
+export const DecoLine = styled.div`
+width: 34%;
+height: 4px;
+background-color: #E6F3C1;
+
+`
 
 export const DateBox = styled.ul`
 width: 100%;
@@ -34,12 +40,6 @@ margin-top: 1rem;
 h2{
     text-align: center;
     font-size: 1.5rem;  
-}
-
-div{
-    width: 34%;
-height: 4px;
-background-color: #E6F3C1;
 }
 
 `;
