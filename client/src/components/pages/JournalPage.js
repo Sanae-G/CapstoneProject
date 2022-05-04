@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import JournalHeader from '../Header/JournalHeader';
 import PostCard from '../Postcard/PostCard';
+import Navbar from '../Navbar/Navbar';
 
 function JournalPage() {
   let [moments, setMoments] = useState([]);
@@ -17,6 +18,7 @@ function JournalPage() {
       <>
       <JournalHeader />
       <PostCard moments = {moments}/>
+      <Navbar />
       </>
   );
 }
