@@ -79,18 +79,6 @@ img{
 }
 `;
 
-
-export const TagBox = styled.ul`
-width: 100%;
-list-style: none;
-display: flex;
-justify-content: center;
-margin-top: 1rem;
-flex-wrap: wrap;
-gap: 0.9rem;
-`;
-
-
 export const Tag = styled.div`
 padding: 0.2rem 1.1rem 0 1.1rem;
 height: 2rem;
@@ -101,6 +89,20 @@ p{
     text-align: center;
 }
 `;
+
+
+export const TagBox = styled.ul`
+width: 100%;
+list-style: none;
+display: flex;
+justify-content: center;
+margin-top: 1rem;
+flex-wrap: wrap;
+gap: 0.9rem;
+& li:nth-child(even) ${Tag} {
+    background: #BEE48E;
+`;
+
 
 export const PlaceBox = styled.div`
     margin-top: 1.3rem;

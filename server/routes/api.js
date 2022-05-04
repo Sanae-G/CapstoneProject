@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
       title: 'Madrid Museum',
       img: 'http://localhost:5006/images/julie-kwak-t_64epomhIs-unsplash.jpg',
       text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
-      tags: [{id: 2.1, tag: 'art'}, {id: 2.2, tag: 'Picasso'}, {id: 2.3, tag: 'Madrid'}],
+      tags: [{id: 2.1, tag: 'art'}, {id: 2.2, tag: 'Picasso'}, {id: 2.3, tag: 'Madrid'}, {id: 2.4, tag: 'Spain'}],
       address: 'Madrid'
     },
     {
