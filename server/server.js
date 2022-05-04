@@ -12,6 +12,8 @@ const port = process.env.PORT || 5006;
 
 app.use(express.json());
 
+app.use(express.static('public'));
+
 // Serve the React static files after build
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 

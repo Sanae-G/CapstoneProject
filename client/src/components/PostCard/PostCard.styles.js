@@ -82,7 +82,6 @@ img{
 
 export const TagBox = styled.ul`
 width: 100%;
-height: 3rem;
 list-style: none;
 display: flex;
 justify-content: center;
@@ -104,20 +103,10 @@ p{
 `;
 
 export const PlaceBox = styled.div`
-    margin-top: 0.7rem;
+    margin-top: 1.3rem;
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-`;
-
-export const Section = styled.section`
-   display: block;
-`;
-
-export const FlexBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
 `;
 
 
