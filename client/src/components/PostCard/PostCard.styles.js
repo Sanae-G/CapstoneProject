@@ -63,6 +63,16 @@ export const Container = styled.div`
 margin: 0 7%;
 margin-bottom: 4rem;
 
+@media only screen and (min-width: 768px) {
+    padding-left: 6.25rem;
+    padding-right: 6.25rem;
+}
+
+@media only screen and (min-width: 1200px) {
+    padding-left: 15rem;
+    padding-right: 15rem;
+}
+
 h3{
     text-align: center;
     padding-top: 2rem;
@@ -76,6 +86,16 @@ img{
     border-bottom-left-radius: 112px;
     margin: 1rem auto;
     border: 7px solid #E6F3C1; 
+
+    @media only screen and (min-width: 768px) {
+        width: 100%;
+        height: auto;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        width: 100%;
+        height: auto;
+    }
 }
 `;
 
