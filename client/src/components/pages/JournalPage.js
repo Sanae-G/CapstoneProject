@@ -18,14 +18,6 @@ function JournalPage() {
       <JournalHeader />
       <PostCard moments = {moments}/>
       </>
-    // <div className="App">
-    //   <h1>Moments</h1>
-    //   <ul>
-    //     {moments && moments.map((moment) =>
-    //       <li key={moment.id}>{moment.title}</li>
-    //     )}
-    //   </ul>
-    // </div>
   );
 }
 
