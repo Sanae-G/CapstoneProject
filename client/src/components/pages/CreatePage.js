@@ -12,7 +12,7 @@ import { useState } from 'react';
 function CreatePage() {
 
     const navigate = useNavigate();
-    const url = '';
+    const url = '/api';
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
 
@@ -20,7 +20,13 @@ function CreatePage() {
         e.preventDefault();
         const post = {title, text};
 
-        fetch('http://localhost:5006/api')
+        fetch(url, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(post)
+        }).then(() => {
+            console.log('add new post');
+        })
     }
 
     function handleClick(){
@@ -30,9 +36,27 @@ function CreatePage() {
  
     return (
         <>
-        <h1>CreatePage</h1>
+        <h1>Add a New Page!</h1>
         <button onClick={handleClick}>Go back to Homepage</button>
         
+        <div>
+            <h1>Add a new Page</h1>
+            <form onSubmit={handleSubmit}>
+                <label>Title:</label>
+                <input type='text' 
+                required value={title} 
+                onChange={(e) => setTitle(e.target.value)}>
+                </input>
+                <label>Blog post:</label>
+               <textarea required
+               value={text} 
+               onChange={(e) => setText(e.target.value)}>
+               </textarea>
+               <button>Add Page</button>
+               <p>{title}</p>
+               <p>{text}</p>
+            </form>
+        </div>
         </>
     );
   }

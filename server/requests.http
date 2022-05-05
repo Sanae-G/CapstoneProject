@@ -4,12 +4,11 @@ GET http://localhost:5006/api
 ###
 
 POST http://localhost:5006/api
-content-type: application/json
+Content-Type: application/json
 
 {
-    "title": "My Henna Tattoo",
-    "text": "Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.",
-
+    "title": "hello",
+    "text": "world"
 }
 
 ###
