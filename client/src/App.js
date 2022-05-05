@@ -16,7 +16,6 @@ function App() {
       />
       <Route path="/create" element={<CreatePage />} />
     </Routes>
-    <Navbar />
     </>
   );
 }

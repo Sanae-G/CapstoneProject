@@ -56,6 +56,22 @@ router.get('/', (req, res, next) => {
   ]);
 });
 
+router.post("/", (req, res) => {
+  const title = req.body.title;
+  const text = req.body.text;
+
+  const newPost = Post({ title: title, text: text});
+  
+  newPost
+    .save()
+    .then((data) => {
+      res.status(201).send(data);
+    })
+    .catch((error) => {
+      res.status(400).json({ error: error.message });
+    });
+});
+
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   res.status(200).json({
