@@ -67,11 +67,13 @@ router.post('/', (req, res) => {
   try {
     const title = req.body.title;
     const text = req.body.text;
+    const date = req.body.date;
+    const day = req.body.day;
 
     const newPost = {
       id: db.length + 1,
-      date: 'hello',
-      day: 'goodbye',
+      date: date,
+      day: day,
       title: title,
       img: '',
       text: text,
