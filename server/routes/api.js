@@ -9,7 +9,7 @@ const db = [
     title: 'My Henna Tattoo',
     img: 'http://localhost:5006/images/henna.png',
     text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
-    tags: [{id: 1.1, tag: 'henna'}, {id: 1.2, tag: 'beauty'}],
+    tags: ['henna', 'beauty'],
     address: 'Ras Al Hanut 33, Casablanca'
   },
   {
@@ -19,7 +19,7 @@ const db = [
     title: 'Madrid Museum',
     img: 'http://localhost:5006/images/julie-kwak-t_64epomhIs-unsplash.jpg',
     text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
-    tags: [{id: 2.1, tag: 'art'}, {id: 2.2, tag: 'Picasso'}, {id: 2.3, tag: 'Madrid'}, {id: 2.4, tag: 'Spain'}],
+    tags: ['art', 'Picasso', 'Madrid', 'Spain'],
     address: 'Madrid'
   },
   {
@@ -29,7 +29,7 @@ const db = [
     title: 'Desert day',
     img: 'http://localhost:5006/images/keith-hardy-PP8Escz15d8-unsplash.jpg',
     text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
-    tags: [{id: 3.1, tag: 'Sahara'}, {id: 3.2, tag: 'Camels'}, {id: 3.3, tag: 'Caravan'}],
+    tags: ['Sahara', 'Camels', 'Caravan'],
     address: 'Sahara'
   },
   {
@@ -39,7 +39,7 @@ const db = [
     title: 'Movie Park',
     img: 'http://localhost:5006/images/karussel.jpg',
     text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
-    tags: [{id: 4.1, tag: 'entertainment'}, {id: 4.2, tag: 'Park'}, {id: 4.3, tag: 'Spongebob'}],
+    tags: ['entertainment', 'Park', 'Spongebob'],
     address: 'Movie Park, Bottrop'
   },
   {
@@ -49,7 +49,7 @@ const db = [
     title: 'Halloween Party at my House',
     img: 'http://localhost:5006/images/paige-cody-nHxG9tP2ElE-unsplash.jpg',
     text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
-    tags: [{id: 5.1, tag: 'party'}, {id: 5.2, tag: 'games'}, {id: 5.3, tag: 'friends'}],
+    tags: ['party', 'games', 'friends'],
     address: 'My Home'
   },
   {
@@ -71,6 +71,7 @@ router.post('/', (req, res) => {
     const day = req.body.day;
     const month = req.body.month;
     const address = req.body.address;
+    const tags = req.body.tags;
 
     const newPost = {
       id: db.length + 1,
@@ -79,7 +80,7 @@ router.post('/', (req, res) => {
       title: title,
       img: '',
       text: text,
-      tags: [],
+      tags: tags.split(','),
       address: address,
     };
 

@@ -27,7 +27,7 @@ function CreatePage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const post = { day, title, text, date, month, address };
+    const post = { day, title, text, date, month, address, tags };
 
     fetch(url, {
       method: 'POST',
@@ -72,7 +72,7 @@ function CreatePage() {
             value={address}
             onChange={e => setAddress(e.target.value)}
           ></input>
-           <label>Tag your Memory:</label>
+           <label>Tag your Memory (separate by Comma):</label>
           <input
           placeholder='festival, beach, ...'
             type="text"

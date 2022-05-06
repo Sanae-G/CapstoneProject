@@ -24,8 +24,8 @@ function PostCard({moments}) {
             </TextBox>
                 <TagBox>
                 {moment.tags && moment.tags.map((subtag) => (
-                <li key = {subtag.id}>
-                <Tag bg='#E6F3C1'><p>{subtag.tag}</p></Tag>
+                <li key = {subtag}>
+                <Tag bg='#E6F3C1'><p>{subtag}</p></Tag>
                 </li>
                 ))}
                 </TagBox>
