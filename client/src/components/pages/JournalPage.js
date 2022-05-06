@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import JournalHeader from '../Header/JournalHeader';
-import PostCard from '../Postcard/PostCard';
+import PostCard from '../PostCard/PostCard';
 import Navbar from '../Navbar/Navbar';
 
 function JournalPage() {
