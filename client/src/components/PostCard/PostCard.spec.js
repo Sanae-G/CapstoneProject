@@ -58,7 +58,6 @@ describe('PostCard', () => {
       expect(day).toBeInTheDocument();
       expect(title).toBeInTheDocument();
       expect(address).toBeInTheDocument();
-      // multple Elements (array)
       expect(text).toHaveLength(3);
       expect(tags).toHaveLength(3);
       expect(displayedImage.src).toContain("henna");
