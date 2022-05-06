@@ -38,11 +38,11 @@ function Date({ date, setDate }) {
   return (
     <>
       <SelectStyle value={date} required onChange={e => setDate(e.target.value)}>
-        <option value="" disabled selected hidden>
+        <option value="" disabled>
           Date
         </option>
         {dates.map(date => (
-          <option value={date}>{date}</option>
+          <option key={date} value={date}>{date}</option>
         ))}
       </SelectStyle>
     </>

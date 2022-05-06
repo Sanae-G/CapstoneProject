@@ -38,41 +38,45 @@ function CreatePage() {
   return (
     <Container>
       <CreateForm>
-        <h1>Keep My Travel Memory</h1>
+        <h1> Keep My Travel Memory</h1>
         <form onSubmit={handleSubmit}>
-          <label>Timing:</label>
+          <label id="Timing-label">Timing:</label>
           <DateBox>
             <Date date={date} setDate={setDate} />
             <Months month={month} setMonth={setMonth} />
             <Days day={day} setDay={setDay} />
           </DateBox>
-          <label>
+          <label id="title">
             Perfect <strong>Title</strong> for my Trip:
           </label>
           <input
+            aria-labelledby="title"
             placeholder="My Trip to..."
             type="text"
             required
             value={title}
             onChange={e => setTitle(e.target.value)}
           ></input>
-          <label>My memorable Travel Experience:</label>
+          <label id="travelMemory">My memorable Travel Experience:</label>
           <textarea
+            aria-labelledby="travelMemory"
             placeholder="Today was ..."
             rows="13"
             required
             value={text}
             onChange={e => setText(e.target.value)}
           ></textarea>
-          <label>Memorable Place:</label>
+          <label id="address">Memorable Place:</label>
           <input
+            aria-labelledby="address"
             placeholder="Address or place..."
             type="text"
             value={address}
             onChange={e => setAddress(e.target.value)}
           ></input>
-          <label>Tag your Memory (separate by Comma):</label>
+          <label id="tags">Tag your Memory (separate by Comma):</label>
           <input
+            aria-labelledby="tags"
             placeholder="festival, beach, ..."
             type="text"
             value={tags}

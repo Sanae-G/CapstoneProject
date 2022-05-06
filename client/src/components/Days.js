@@ -6,12 +6,12 @@ function Days({ day, setDay }) {
   return (
     <>
       <SelectStyle value={day} required onChange={e => setDay(e.target.value)}>
-        <option value="" disabled selected hidden>
+        <option value="" disabled>
           Day
         </option>
 
         {days.map(_day => (
-          <option value={_day}>{_day}</option>
+          <option key={_day} value={_day}>{_day}</option>
         ))}
       </SelectStyle>
     </>

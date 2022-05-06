@@ -19,11 +19,11 @@ function Months({ month, setMonth }) {
   return (
     <>
       <SelectStyle value={month} required onChange={e => setMonth(e.target.value)}>
-        <option value="" disabled selected hidden>
+        <option value="" disabled>
           Month
         </option>
         {months.map(_month => (
-          <option value={_month}>{_month}</option>
+          <option key={_month} value={_month}>{_month}</option>
         ))}
       </SelectStyle>
     </>
