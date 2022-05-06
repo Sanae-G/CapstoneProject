@@ -17,15 +17,15 @@ function PostCard({moments}) {
             <StyledParagraph>{moment.day}</StyledParagraph>
             <h3>{moment.title}</h3>
             {moment.img !== '' ? 
-            <img src={moment.img} alt="picture" /> : ''
+            <img src={moment.img} alt="moment" /> : ''
             }
             <TextBox>
             <p>{moment.text}</p>
             </TextBox>
                 <TagBox>
                 {moment.tags && moment.tags.map((subtag) => (
-                <li key = {subtag.id}>
-                <Tag><p>{subtag.tag}</p></Tag>
+                <li key = {subtag}>
+                <Tag><p>{subtag}</p></Tag>
                 </li>
                 ))}
                 </TagBox>
