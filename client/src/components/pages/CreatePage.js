@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Days from '../Days';
 import Months from '../Months';
 import Date from '../Date';
-import CancelIcon from '../../icons/cancel';
 
 // id: 1,
 //       date: '2. April',
@@ -23,10 +22,11 @@ function CreatePage() {
   const [day, setDay] = useState('');
   const [month, setMonth] = useState('');
   const [date, setDate] = useState('');
+  const [address, setAddress] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    const post = { day, title, text };
+    const post = { day, title, text, date, month };
 
     fetch(url, {
       method: 'POST',
@@ -34,6 +34,7 @@ function CreatePage() {
       body: JSON.stringify(post),
     }).then(() => {
       console.log('add new post');
+      console.log(post)
     });
     handleClick();
   }
@@ -44,32 +45,44 @@ function CreatePage() {
 
   return (
  <Container>
-     <div onClick={handleClick}>
-     <CancelIcon/>
-     </div>
       <CreateForm>
-        <h1>Add a new Moment</h1>
+        <h1>Keep My Travel Memory</h1>
         <form onSubmit={handleSubmit}>
-          <label>Date:</label>
+          <label>Timing:</label>
           <DateBox>
             <Date date={date} setDate={setDate} />
-            <Months day={month} setDay={setMonth} />
-            <Days month={day} setMonth={setDay} />
+            <Months month={month} setMonth={setMonth} />
+            <Days day={day} setDay={setDay} />
           </DateBox>
-          <label>Title:</label>
+          <label>Perfect <strong>Title</strong> for my Trip:</label>
           <input
+            placeholder='My Trip to...'
             type="text"
             required
             value={title}
             onChange={e => setTitle(e.target.value)}
           ></input>
-          <label>Blog post:</label>
-          <textarea rows='7' required value={text} onChange={e => setText(e.target.value)}></textarea>
-          <button>Add Page</button>
+          <label>My memorable Travel Experience:</label>
+          <textarea placeholder='Today was ...' rows='13' required value={text} onChange={e => setText(e.target.value)}></textarea>
+          <label>Memorable Place:</label>
+          <input
+            placeholder='Address...'
+            type="text"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+          ></input>
+           <label>Tag your Memory:</label>
+          <input
+          placeholder='festival, beach, ...'
+            type="text"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+          ></input>
+          <button>Keep Memory</button>
         </form>
       </CreateForm>
+      <CancelButton onClick={handleClick}>Forget it</CancelButton>
     </Container>
-   
   );
 }
 
@@ -99,21 +112,21 @@ const CreateForm = styled.div`
   input,
   textarea {
     width: 100%;
-    margin: 10px 0;
+    margin: 7px 0;
     padding: 6px 10px;
     border: none;
     box-sizing: border-box;
     display: block;
-    background-color: #f8f5f5;
+    background-color: #F4EEFF;
+    opacity: 50%;
+    border: 1px solid #C9B6E4;
+    border-radius: 7px;
   }
 
   input{
       height: 2.5rem;
   }
 
-  textarea{
-      height: 
-  }
 
   select {
     text-align: center;
@@ -121,6 +134,8 @@ const CreateForm = styled.div`
   }
 
   button {
+    margin-top: 1rem;
+    width: 9rem;
     background-color: #8edfe4;
     color: #000;
     border: 0;
@@ -137,8 +152,9 @@ const DateBox = styled.div`
 `;
 
 const Container = styled.div`
-margin: 3rem 7% 0;
+margin: 2rem 7% 0;
 margin-bottom: 4rem;
+padding-top: 2rem;
 
 @media only screen and (min-width: 768px) {
     padding-left: 6.25rem;
@@ -151,4 +167,19 @@ margin-bottom: 4rem;
 }
 
 }
+`;
+
+
+const CancelButton = styled.button`
+    width: 9rem;
+    background-color: #ff8fa3;
+    color: #000;
+    border: 0;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 0.7rem;
 `;

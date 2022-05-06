@@ -69,16 +69,18 @@ router.post('/', (req, res) => {
     const text = req.body.text;
     const date = req.body.date;
     const day = req.body.day;
+    const month = req.body.month;
+    const address = req.body.address;
 
     const newPost = {
       id: db.length + 1,
-      date: date,
+      date: month + ' ' + date,
       day: day,
       title: title,
       img: '',
       text: text,
       tags: [],
-      adress: 'lala',
+      adress: address,
     };
 
     db.push(newPost);

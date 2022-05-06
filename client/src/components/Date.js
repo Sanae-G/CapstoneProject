@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 function Date({date, setDate}) {
     const dates = [
         '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', 
@@ -8,15 +10,22 @@ function Date({date, setDate}) {
 
     return (
     <>
-    <select value={date}
+    <SelectStyle value={date}
     required
     onChange={(e) => setDate(e.target.value)}>
+        <option value='' disabled selected hidden>Date</option>
         {dates.map((date) => (
             <option value={date}>{date}</option>
         ))}
-    </select>
+    </SelectStyle>
     </>
     )
 }
 
 export default Date;
+
+const SelectStyle = styled.select`
+    background-color: #F0D9FF;
+    border-radius: 5px;
+    border: none;
+`;
