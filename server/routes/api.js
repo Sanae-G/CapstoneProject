@@ -80,7 +80,7 @@ router.post('/', (req, res) => {
       img: '',
       text: text,
       tags: [],
-      adress: address,
+      address: address,
     };
 
     db.push(newPost);

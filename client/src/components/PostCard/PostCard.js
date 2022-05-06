@@ -16,7 +16,9 @@ function PostCard({moments}) {
             </DateBox>
             <P2>{moment.day}</P2>
             <h3>{moment.title}</h3>
-            <img src={moment.img} alt="henna" />
+            {moment.img !== '' ? 
+            <img src={moment.img} alt="picture" /> : ''
+            }
             <TextBox>
             <p>{moment.text}</p>
             </TextBox>
@@ -27,9 +29,13 @@ function PostCard({moments}) {
                 </li>
                 ))}
                 </TagBox>
-            <PlaceBox>
-                <AdressIcon /><p>{moment.address}</p>
-            </PlaceBox>
+            {moment.address !== '' ? 
+            (
+                <PlaceBox>
+                    <AdressIcon /><p>{moment.address}</p>
+                </PlaceBox>
+            ) : ''
+            }
             </Container>
         ))}
         </ul>

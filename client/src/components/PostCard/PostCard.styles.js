@@ -74,6 +74,7 @@ margin-bottom: 4rem;
 }
 
 h3{
+    margin-bottom: 1rem;
     text-align: center;
     padding-top: 2rem;
     font-size: 1.3rem; 

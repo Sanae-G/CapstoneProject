@@ -23,10 +23,11 @@ function CreatePage() {
   const [month, setMonth] = useState('');
   const [date, setDate] = useState('');
   const [address, setAddress] = useState('');
+  const [tags, setTags] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    const post = { day, title, text, date, month };
+    const post = { day, title, text, date, month, address };
 
     fetch(url, {
       method: 'POST',
@@ -75,8 +76,8 @@ function CreatePage() {
           <input
           placeholder='festival, beach, ...'
             type="text"
-            value={address}
-            onChange={e => setAddress(e.target.value)}
+            value={tags}
+            onChange={e => setTags(e.target.value)}
           ></input>
           <button>Keep Memory</button>
         </form>
@@ -118,7 +119,6 @@ const CreateForm = styled.div`
     box-sizing: border-box;
     display: block;
     background-color: #F4EEFF;
-    opacity: 50%;
     border: 1px solid #C9B6E4;
     border-radius: 7px;
   }
