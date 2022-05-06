@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import JournalHeader from '../Header/JournalHeader';
-import PostCard from '../Postcard/PostCard';
+import PostCard from '../PostCard/PostCard';
 
 function JournalPage() {
   let [moments, setMoments] = useState([]);
