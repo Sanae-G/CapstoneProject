@@ -5,15 +5,6 @@ import Days from '../Days';
 import Months from '../Months';
 import Date from '../Date';
 
-// id: 1,
-//       date: '2. April',
-//       day: 'Thursday',
-//       title: 'My Henna Tattoo',
-//       img: 'http://localhost:5006/images/henna.png',
-//       text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
-//       tags: [{id: 1.1, tag: 'henna'}, {id: 1.2, tag: 'beauty'}],
-//       address: 'Ras Al Hanut 33, Casablanca'
-
 function CreatePage() {
   const navigate = useNavigate();
   const url = '/api';
@@ -35,7 +26,7 @@ function CreatePage() {
       body: JSON.stringify(post),
     }).then(() => {
       console.log('add new post');
-      console.log(post)
+      console.log(post);
     });
     handleClick();
   }
@@ -45,7 +36,7 @@ function CreatePage() {
   }
 
   return (
- <Container>
+    <Container>
       <CreateForm>
         <h1>Keep My Travel Memory</h1>
         <form onSubmit={handleSubmit}>
@@ -55,26 +46,34 @@ function CreatePage() {
             <Months month={month} setMonth={setMonth} />
             <Days day={day} setDay={setDay} />
           </DateBox>
-          <label>Perfect <strong>Title</strong> for my Trip:</label>
+          <label>
+            Perfect <strong>Title</strong> for my Trip:
+          </label>
           <input
-            placeholder='My Trip to...'
+            placeholder="My Trip to..."
             type="text"
             required
             value={title}
             onChange={e => setTitle(e.target.value)}
           ></input>
           <label>My memorable Travel Experience:</label>
-          <textarea placeholder='Today was ...' rows='13' required value={text} onChange={e => setText(e.target.value)}></textarea>
+          <textarea
+            placeholder="Today was ..."
+            rows="13"
+            required
+            value={text}
+            onChange={e => setText(e.target.value)}
+          ></textarea>
           <label>Memorable Place:</label>
           <input
-            placeholder='Address or place...'
+            placeholder="Address or place..."
             type="text"
             value={address}
             onChange={e => setAddress(e.target.value)}
           ></input>
-           <label>Tag your Memory (separate by Comma):</label>
+          <label>Tag your Memory (separate by Comma):</label>
           <input
-          placeholder='festival, beach, ...'
+            placeholder="festival, beach, ..."
             type="text"
             value={tags}
             onChange={e => setTags(e.target.value)}
@@ -121,14 +120,13 @@ const CreateForm = styled.div`
     box-sizing: border-box;
     display: block;
     background-color: #fff;
-    border: 3px solid #C9B6E4;
+    border: 3px solid #c9b6e4;
     border-radius: 7px;
   }
 
-  input{
-      height: 2.5rem;
+  input {
+    height: 2.5rem;
   }
-
 
   select {
     text-align: center;
@@ -172,17 +170,16 @@ padding-top: 2rem;
 }
 `;
 
-
 const CancelButton = styled.button`
-    width: 9rem;
-    background-color: #ff8fa3;
-    color: #000;
-    border: 0;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top: 0.7rem;
+  width: 9rem;
+  background-color: #ff8fa3;
+  color: #000;
+  border: 0;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 0.7rem;
 `;

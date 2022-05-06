@@ -10,16 +10,14 @@ function JournalPage() {
     fetch('/api')
       .then(res => res.json())
       .then(data => setMoments(data));
-  }, [])
-
-
+  }, []);
 
   return (
-      <>
+    <>
       <JournalHeader />
-      <PostCard moments = {moments}/>
+      <PostCard moments={moments} />
       <Navbar />
-      </>
+    </>
   );
 }
 
