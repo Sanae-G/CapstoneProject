@@ -45,7 +45,7 @@ h2{
 `;
 
 
-export const P2 = styled.p`
+export const StyledParagraph = styled.p`
 text-align: center;
 padding-top: 0.5rem;
 font-size: 1rem;
@@ -103,7 +103,7 @@ img{
 export const Tag = styled.div`
 padding: 0.2rem 1.1rem 0 1.1rem;
 height: 2rem;
-background-color: ${(props) => props.bg};
+background-color: #E6F3C1;
 border-radius: 8px;
 
 p{
