@@ -4,7 +4,7 @@ const router = express.Router();
 const db = [
   {
     id: 1,
-    date: '2. April',
+    date: 'April 2nd',
     day: 'Thursday',
     title: 'My Henna Tattoo',
     img: 'http://localhost:5006/images/henna.png',
@@ -14,7 +14,7 @@ const db = [
   },
   {
     id: 2,
-    date: '2. September',
+    date: 'September 3rd',
     day: 'Friday',
     title: 'Madrid Museum',
     img: 'http://localhost:5006/images/julie-kwak-t_64epomhIs-unsplash.jpg',
@@ -24,7 +24,7 @@ const db = [
   },
   {
     id: 3,
-    date: '2. May',
+    date: 'May 15th',
     day: 'Thursday',
     title: 'Desert day',
     img: 'http://localhost:5006/images/keith-hardy-PP8Escz15d8-unsplash.jpg',
@@ -34,7 +34,7 @@ const db = [
   },
   {
     id: 4,
-    date: '2. July',
+    date: 'July 6th',
     day: 'Tuesday',
     title: 'Movie Park',
     img: 'http://localhost:5006/images/karussel.jpg',
@@ -44,18 +44,13 @@ const db = [
   },
   {
     id: 5,
-    date: '31. October',
+    date: 'October 31st',
     day: 'Monday',
     title: 'Halloween Party at my House',
     img: 'http://localhost:5006/images/paige-cody-nHxG9tP2ElE-unsplash.jpg',
     text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
     tags: ['party', 'games', 'friends'],
     address: 'My Home'
-  },
-  {
-    id: 6,
-    title: 'Halloween Party at my House',
-    text: 'Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.',
   }
 ];
 

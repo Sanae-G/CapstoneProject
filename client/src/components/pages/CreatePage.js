@@ -67,7 +67,7 @@ function CreatePage() {
           <textarea placeholder='Today was ...' rows='13' required value={text} onChange={e => setText(e.target.value)}></textarea>
           <label>Memorable Place:</label>
           <input
-            placeholder='Address...'
+            placeholder='Address or place...'
             type="text"
             value={address}
             onChange={e => setAddress(e.target.value)}
@@ -112,14 +112,16 @@ const CreateForm = styled.div`
 
   input,
   textarea {
+    font-family: 'Poppins', sans-serif;
+    color: black;
     width: 100%;
     margin: 7px 0;
     padding: 6px 10px;
     border: none;
     box-sizing: border-box;
     display: block;
-    background-color: #F4EEFF;
-    border: 1px solid #C9B6E4;
+    background-color: #fff;
+    border: 3px solid #C9B6E4;
     border-radius: 7px;
   }
 
@@ -131,6 +133,7 @@ const CreateForm = styled.div`
   select {
     text-align: center;
     padding: 5px;
+    font-family: 'Poppins', sans-serif;
   }
 
   button {

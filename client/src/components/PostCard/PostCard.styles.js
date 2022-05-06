@@ -69,8 +69,8 @@ margin-bottom: 4rem;
 }
 
 @media only screen and (min-width: 1200px) {
-    padding-left: 15rem;
-    padding-right: 15rem;
+    padding-left: 20rem;
+    padding-right: 20rem;
 }
 
 h3{
