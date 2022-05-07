@@ -14,6 +14,7 @@ function App() {
         element={<JournalPage />}
       />
       <Route path="/create" element={<CreatePage />} />
+      <Route path="/update/:id" element={<CreatePage />} />
     </Routes>
     </>
   );

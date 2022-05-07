@@ -9,6 +9,7 @@ import {
   DecoLine,
 } from './PostCard.styles';
 import AdressIcon from '../../icons/adress';
+import { NavLink } from 'react-router-dom';
 
 function PostCard({ moments }) {
   return (
@@ -45,6 +46,9 @@ function PostCard({ moments }) {
             ) : (
               ''
             )}
+            <NavLink to={`/update/${moment.id}`}>
+              <button>Edit</button>
+            </NavLink>
           </Container>
         ))}
     </ul>
