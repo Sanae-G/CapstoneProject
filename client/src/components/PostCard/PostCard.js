@@ -29,13 +29,13 @@ function PostCard({ moments }) {
             </TextBox>
             <TagBox>
               {moment.tags &&
-                moment.tags.map(subtag => (
+                moment.tags.map(subtag => subtag !== '' ? (
                   <li key={subtag}>
                     <Tag>
                       <p>{subtag}</p>
                     </Tag>
                   </li>
-                ))}
+                ) : '')}
             </TagBox>
             {moment.address !== '' ? (
               <PlaceBox>
