@@ -15,6 +15,7 @@ function CreatePage() {
   const [date, setDate] = useState('');
   const [address, setAddress] = useState('');
   const [tags, setTags] = useState('');
+ 
 
   function handleSubmit(e) {
     e.preventDefault();

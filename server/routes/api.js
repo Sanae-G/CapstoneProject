@@ -88,29 +88,17 @@ router.post('/', (req, res) => {
   }
 });
 
-router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  res.status(200).json({
-    id: id,
-    name: 'something',
-  });
+
+router.get('/:id', (req, res) => {
+  const { id } = req.params.id;
+
+try {
+  const selectedObject = db.find((object) => object.id === id);
+  res.status(200).send(selectedObject);
+} catch (error) {
+  res.status(400).json({ message: 'Something went wrong!', error: error.message });
+}
 });
-
-export default router;
-
-
-// router.get('/:id', (req, res) => {
-//   const { id } = req.params.id;
-
-// try {
-//  const singleObject = db.filter((object) => {
-//     object.id === id
-//   });
-//   res.status(200).send(singleObject);
-// } catch (error) {
-//   res.status(400).json({ message: 'Something went wrong!', error: error.message });
-// }
-// });
 
 
 // router.delete('/:id', (req, res) => {
@@ -146,3 +134,4 @@ router.patch("/:id", (req, res) => {
   }
 });
 
+export default router;
