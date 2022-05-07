@@ -3,18 +3,33 @@ GET http://localhost:5006/api
 
 ###
 
+GET http://localhost:5006/api/d8e14c1f-d40e-4bf7-8422-c8ec235bc43a
+# GET single object from the API
+
+###
+
 POST http://localhost:5006/api
 Content-Type: application/json
 
 {
     "title": "hello",
-    "text": "world"
+    "text": "world",
+    "tags": "what, ever, good"
 }
 
 ###
-DELETE http://localhost:5006/api/
+DELETE http://localhost:5006/api/196d95eb-26b3-48ad-aeed-c54c5b6eb6b9
 # Deletes a post
 
 ###
+
+PATCH http://localhost:5006/api/d8e14c1f-d40e-4bf7-8422-c8ec235bc43a
+Content-Type: application/json
+
+{
+    "title": "hello",
+    "text": "HalalBratwurst",
+    "tags": ["what, ever, good"]
+}
 
 
