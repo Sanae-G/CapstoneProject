@@ -3,12 +3,12 @@ import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema(
   {
-    date: { type: String, required: true },
-    month: { type: String, required: true },
-    day: { type: String, required: true },
-    title: { type: String, required: true },
+    date: { type: String, required: [ true, 'Your post requires a date!' ] },
+    month: { type: String, required: [ true, 'Your post requires a month!' ] },
+    day: { type: String, required: [ true, 'Your post requires a day' ] },
+    title: { type: String, required: [ true, 'Your post requires a title!' ]},
     img: { type: String }, 
-    text: { type: String, required: true },
+    text: { type: String, required: [ true, 'Your post requires a content!' ] },
     tags: { type: Array},
     address: { type: String },
   },

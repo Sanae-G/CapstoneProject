@@ -12,14 +12,34 @@ export const readPosts = async (req, res) => {
     }
 }
 
-export const createPost = async (req, res) => {
-    // const date = req.body.date;
-    // const month = req.body.month;
-    // const day = req.body.day;
-    // const title = req.body.title;
-    // const text = req.body.text;
-    // const address = req.body.address;
-    // const tags = req.body.tags;
+export const createPost = (req, res) => {
+    const date = req.body.date;
+    const month = req.body.month;
+    const day = req.body.day;
+    const title = req.body.title;
+    const text = req.body.text;
+    const address = req.body.address;
+    const tags = req.body.tags;
+
+
+    const newPost = new Post(
+        {
+            date: month + ' ' + date,
+            day: day,
+            title: title,
+            img: '',
+            text: text,
+            tags: tags.split(','),
+            address: address
+        }
+      )
+      
+      newPost.save().then((data) => {
+        res.status(201).json(data);
+      }).catch(error => {
+        res.status(400).json({ error: error.message });
+      })
+    }
 
     // const newPost = Post(
     //     {
@@ -41,15 +61,16 @@ export const createPost = async (req, res) => {
     // .catch((error) => {
     //     res.status(400).json({ error: error.message });
     //   });
-    try{
-        res.status(200).json({message: `set post`});
-    }catch(error){
-        res.status(409).json({
-            error: error.message
-        })
-    }
+    // try{
+    //     console.log(req.body);
+    //     res.status(200).send('set post');
+    // }catch(error){
+    //     res.status(409).json({
+    //         error: error.message
+    //     })
+    // }
 
-    }
+    // }
 
 
 

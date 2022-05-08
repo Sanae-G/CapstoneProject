@@ -1,13 +1,15 @@
 import express from 'express';
 import path from 'path';
-import api from './routes/api.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 import dotenv from 'dotenv';
 
 import postsRoutes from './routes/posts.js';
+import api from './routes/api.js';
+
 import connectDB from './config/db.js';
+// import Post from './models/postsModel.js';
 
 dotenv.config();
 
@@ -20,9 +22,25 @@ const app = express();
 const port = process.env.PORT || 5007;
 
 
-app.use('/posts', postsRoutes)
-
 app.use(express.json());
+
+// const testPost = new Post(
+//   {
+//     title: 'hello',
+//     date: '3rd',
+//     month: 'february',
+//     text: 'whatever whatever'
+//   }
+// )
+
+// testPost.save().then(doc => {
+//   console.log(doc)
+// }).catch(err => {
+//   console.log('ERROR:', err)
+// })
+
+//serve API from MongoDB
+app.use('/posts', postsRoutes)
 
 app.use(express.static('public'));
 

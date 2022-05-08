@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
     const tags = req.body.tags;
 
     const newPost = {
-      id: db.length + 1,
+      id: uuidv4(),
       date: month + ' ' + date,
       day: day,
       title: title,
