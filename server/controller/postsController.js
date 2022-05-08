@@ -1,16 +1,10 @@
 import Post from '../models/postsModel.js';
 
-export const readPosts = async (req, res) => {
-
-    const posts = await Post.find()
-    try{
-        res.status(200).json(posts);
-    }catch(error){
-        res.status(404).json({
-            error: error.message
-        })
-    }
-}
+export const readPosts = (req, res) => {
+    Post.find({}).then((data) => {
+      res.send(data);
+    });
+  }
 
 export const createPost = (req, res) => {
     const date = req.body.date;
@@ -73,23 +67,38 @@ export const createPost = (req, res) => {
     // }
 
 
+export const updatePost = (req, res, next) => {
+    const id = req.params.id;
+    const updatedPost = req.body;
+    Post.findByIdAndUpdate(id, { ...updatedPost }, { new: true })
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch(() => {
+        next();
+      });
+  }
 
-export const updatePost = async (req, res) => {
-    try{
-        res.status(200).json({message: `update goal ${req.params.id}`});
-    }catch(error){
-        res.status(409).json({
-            error: error.message
-        })
-    }
-}
 
-export const deletePost = async (req, res) => {
-    try{
-        res.status(200).json({message: `delete goal ${req.params.id}`});
-    }catch(error){
-        res.status(409).json({
-            error: error.message
-        })
-    }
-}
+
+export const deletePost = (req, res, next) => {
+    const id = req.params.id;
+    Post.findByIdAndDelete(id)
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch(() => {
+        next();
+      });
+  }
+
+export const getSinglePost = (req, res, next) => {
+    const id = req.params.id;
+    Post.findById(id)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch(() => {
+        next();
+      });
+  }
