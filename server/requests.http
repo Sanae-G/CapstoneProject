@@ -1,4 +1,4 @@
-GET http://localhost:5006/api
+GET http://localhost:5007/api
 # GET all Objects from the API
 
 ###
@@ -32,4 +32,23 @@ Content-Type: application/json
     "tags": ["what, ever, good"]
 }
 
+#### 
 
+
+GET http://localhost:5007/posts
+Content-Type: application/json
+
+###
+
+POST http://localhost:5007/posts
+Content-Type: application/json
+
+ {
+    "date": "April 2nd",
+    "day": "Thursday",
+    "title": "My Henna Tattoo",
+    "img": "http://localhost:5007/images/henna.png",
+    "text": "Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.",
+    "tags": ["henna", "beauty"],
+    "address": "Ras Al Hanut 33, Casablanca",
+  }

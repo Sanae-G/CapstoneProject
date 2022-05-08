@@ -16,7 +16,7 @@ function PostCard({ moments }) {
     <ul>
       {moments &&
         moments.map(moment => (
-          <Container key={moment.id}>
+          <Container key={moment._id}>
             <DateBox>
               <DecoLine />
               <h2>{moment.date}</h2>
@@ -46,7 +46,7 @@ function PostCard({ moments }) {
             ) : (
               ''
             )}
-            <NavLink to={`/update/${moment.id}`}>
+            <NavLink to={`/update/${moment._id}`}>
               <button>Edit</button>
             </NavLink>
           </Container>

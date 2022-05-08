@@ -4,11 +4,23 @@ import api from './routes/api.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+import dotenv from 'dotenv';
+
+import postsRoutes from './routes/posts.js';
+import connectDB from './config/db.js';
+
+dotenv.config();
+
+connectDB()
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const port = process.env.PORT || 5006;
+const port = process.env.PORT || 5007;
+
+
+app.use('/posts', postsRoutes)
 
 app.use(express.json());
 

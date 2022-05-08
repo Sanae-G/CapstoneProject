@@ -7,7 +7,7 @@ import Date from '../Date';
 
 function CreatePage() {
   const navigate = useNavigate();
-  const url = '/api';
+  const url = '/posts';
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [day, setDay] = useState('');

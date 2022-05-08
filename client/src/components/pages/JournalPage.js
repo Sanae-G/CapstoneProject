@@ -7,7 +7,7 @@ function JournalPage() {
   let [moments, setMoments] = useState([]);
 
   useEffect(() => {
-    fetch('/api')
+    fetch('/posts')
       .then(res => res.json())
       .then(data => setMoments(data));
   }, []);
