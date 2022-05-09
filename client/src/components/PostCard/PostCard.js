@@ -19,7 +19,7 @@ function PostCard({ moments }) {
           <Container key={moment._id}>
             <DateBox>
               <DecoLine />
-              <h2>{moment.date}</h2>
+              <h2>{moment.month} {moment.date}</h2>
               <DecoLine />
             </DateBox>
             <StyledParagraph>{moment.day}</StyledParagraph>
