@@ -1,4 +1,4 @@
-GET http://localhost:5006/api
+GET http://localhost:5007/api
 # GET all Objects from the API
 
 ###
