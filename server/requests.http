@@ -43,13 +43,13 @@ Content-Type: application/json
 POST http://localhost:5007/posts
 Content-Type: application/json
 
- {
-    "date": "2nd",
-    "month": "April",
-    "day": "Thursday",
-    "title": "My Henna Tattoo",
-    "img": "http://localhost:5007/images/henna.png",
-    "text": "Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.",
-    "tags": "henna, beauty",
-    "address": "Ras Al Hanut 33, Casablanca",
-  }
+{
+   "date":"2nd",
+   "month":"April",
+   "day":"Thursday",
+   "title":"My Henna Tattoo",
+   "img":"http://localhost:5007/images/henna.png",
+   "text":"Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.",
+   "tags":"henna, beauty",
+   "address":"Ras Al Hanut 33, Casablanca"
+}

@@ -18,7 +18,8 @@ export const createPost = (req, res) => {
 
     const newPost = new Post(
         {
-            date: month + ' ' + date,
+            date: date,
+            month: month,
             day: day,
             title: title,
             img: '',
@@ -34,37 +35,6 @@ export const createPost = (req, res) => {
         res.status(400).json({ error: error.message });
       })
     }
-
-    // const newPost = Post(
-    //     {
-    //         date: month + ' ' + date,
-    //         day: day,
-    //         title: title,
-    //         img: '',
-    //         text: text,
-    //         tags: tags.split(','),
-    //         address: address
-    //     }
-    // );
-
-    // newPost
-    // .save()
-    // .then((data) => {
-    //   res.status(201).json(data);
-    // })
-    // .catch((error) => {
-    //     res.status(400).json({ error: error.message });
-    //   });
-    // try{
-    //     console.log(req.body);
-    //     res.status(200).send('set post');
-    // }catch(error){
-    //     res.status(409).json({
-    //         error: error.message
-    //     })
-    // }
-
-    // }
 
 
 export const updatePost = (req, res, next) => {

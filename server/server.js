@@ -23,20 +23,6 @@ const port = process.env.PORT || 5007;
 
 app.use(express.json());
 
-// const testPost = new Post(
-//   {
-//     title: 'hello',
-//     date: '3rd',
-//     month: 'february',
-//     text: 'whatever whatever'
-//   }
-// )
-
-// testPost.save().then(doc => {
-//   console.log(doc)
-// }).catch(err => {
-//   console.log('ERROR:', err)
-// })
 
 //serve API from MongoDB
 app.use('/posts', postsRoutes);
