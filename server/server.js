@@ -13,14 +13,13 @@ import connectDB from './config/db.js';
 
 dotenv.config();
 
-connectDB()
+connectDB();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 5007;
-
 
 app.use(express.json());
 
@@ -40,7 +39,7 @@ app.use(express.json());
 // })
 
 //serve API from MongoDB
-app.use('/posts', postsRoutes)
+app.use('/posts', postsRoutes);
 
 app.use(express.static('public'));
 
