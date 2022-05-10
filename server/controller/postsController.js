@@ -45,7 +45,7 @@ export const updatePost = (req, res, next) => {
     const title = req.body.title;
     const text = req.body.text;
     const address = req.body.address;
-    const tags = (req.body.tags).split(',');
+    const tags = req.body.tags.split(',');
 
 
     Post.findByIdAndUpdate(id, {date, month, day, title, text, address, tags}, { new: true })
