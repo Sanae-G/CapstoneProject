@@ -39,8 +39,16 @@ export const createPost = (req, res) => {
 
 export const updatePost = (req, res, next) => {
     const id = req.params.id;
-    const updatedPost = req.body;
-    Post.findByIdAndUpdate(id, { ...updatedPost }, { new: true })
+    const date = req.body.date;
+    const month = req.body.month;
+    const day = req.body.day;
+    const title = req.body.title;
+    const text = req.body.text;
+    const address = req.body.address;
+    const tags = (req.body.tags).split(',');
+
+
+    Post.findByIdAndUpdate(id, {date, month, day, title, text, address, tags}, { new: true })
       .then((data) => {
         res.status(200).send(data);
       })
