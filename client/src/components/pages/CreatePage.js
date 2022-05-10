@@ -36,7 +36,6 @@ function CreatePage() {
   }
 
   return (
-    <>
       <Container>
         <h1> Keep My Travel Memory</h1>
         <form onSubmit={handleSubmit}>
@@ -86,7 +85,6 @@ function CreatePage() {
         </form>
         <CancelButton onClick={handleClick}>Forget it</CancelButton>
       </Container>
-    </>
   );
 }
 

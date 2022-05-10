@@ -60,7 +60,6 @@ function EditPage() {
   }
 
   return (
-    <>
       <Container>
         <h1> Keep My Travel Memory</h1>
         <form onSubmit={handleUpdate}>
@@ -110,7 +109,6 @@ function EditPage() {
         </form>
         <CancelButton onClick={handleClick}>Forget it</CancelButton>
       </Container>
-    </>
   );
 }
 
