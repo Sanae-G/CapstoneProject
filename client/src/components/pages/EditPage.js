@@ -1,13 +1,17 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Days from '../Days';
 import Months from '../Months';
 import Date from '../Date';
+import { useParams } from 'react-router-dom';
 
-function CreatePage() {
+function EditPage() {
   const navigate = useNavigate();
-  const url = '/posts';
+
+  const { id } = useParams();
+  const url = `/posts`;
+
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
@@ -16,19 +20,39 @@ function CreatePage() {
   const [address, setAddress] = useState('');
   const [tags, setTags] = useState('');
 
-  function handleSubmit(e) {
+  useEffect(() => {
+    const getSinglePost = () => {
+      fetch(`${url}/${id}`, { method: 'GET' })
+        .then(res => res.json())
+        .then(
+          data =>
+            setTitle(data.title) +
+            setText(data.text) +
+            setDay(data.day) +
+            setMonth(data.month) +
+            setDate(data.date) +
+            setAddress(data.address) +
+            setTags(data.tags.join(','))
+        );
+    };
+    getSinglePost();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  console.log(tags);
+  function handleUpdate(e) {
     e.preventDefault();
     const post = { day, title, text, date, month, address, tags };
 
-    fetch(url, {
-      method: 'POST',
+    fetch(`${url}/${id}`, {
+      method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(post),
-    }).then(() => {
-      console.log('add new post');
-      console.log(post);
-      handleClick();
-    });
+    })
+      .then(data => data.json())
+      .then(data => {
+        console.log('update post');
+        console.log(data);
+        handleClick();
+      });
   }
 
   function handleClick() {
@@ -38,7 +62,7 @@ function CreatePage() {
   return (
       <Container>
         <h1> Keep My Travel Memory</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleUpdate}>
           <label id="Timing-label">Timing:</label>
           <DateBox>
             <Date date={date} setDate={setDate} />
@@ -81,14 +105,14 @@ function CreatePage() {
             value={tags}
             onChange={e => setTags(e.target.value)}
           ></input>
-          <CreateButton>Keep Memory</CreateButton>
+          <UpdateButton>Update Memory</UpdateButton>
         </form>
         <CancelButton onClick={handleClick}>Forget it</CancelButton>
       </Container>
   );
 }
 
-export default CreatePage;
+export default EditPage;
 
 const Container = styled.div`
   max-width: 100%;
@@ -149,7 +173,7 @@ const DateBox = styled.div`
   gap: 1.3rem;
 `;
 
-const CreateButton = styled.button`
+const UpdateButton = styled.button`
   margin-top: 1rem;
   width: 9rem;
   background-color: #8edfe4;

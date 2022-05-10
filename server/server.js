@@ -1,8 +1,19 @@
 import express from 'express';
 import path from 'path';
-import api from './routes/api.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+
+import dotenv from 'dotenv';
+
+import postsRoutes from './routes/posts.js';
+import api from './routes/api.js';
+
+import connectDB from './config/db.js';
+// import Post from './models/postsModel.js';
+
+dotenv.config();
+
+connectDB();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,6 +22,10 @@ const app = express();
 const port = process.env.PORT || 5007;
 
 app.use(express.json());
+
+
+//serve API from MongoDB
+app.use('/posts', postsRoutes);
 
 app.use(express.static('public'));
 

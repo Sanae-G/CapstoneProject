@@ -1,9 +1,11 @@
 import express from 'express';
+import { v4 as uuidv4 } from 'uuid';
 const router = express.Router();
+
 
 const db = [
   {
-    id: 1,
+    id: uuidv4(),
     date: 'April 2nd',
     day: 'Thursday',
     title: 'My Henna Tattoo',
@@ -13,7 +15,7 @@ const db = [
     address: 'Ras Al Hanut 33, Casablanca'
   },
   {
-    id: 2,
+    id: uuidv4(),
     date: 'September 3rd',
     day: 'Friday',
     title: 'Madrid Museum',
@@ -23,7 +25,7 @@ const db = [
     address: 'Madrid'
   },
   {
-    id: 3,
+    id: uuidv4(),
     date: 'May 15th',
     day: 'Thursday',
     title: 'Desert day',
@@ -33,7 +35,7 @@ const db = [
     address: 'Sahara'
   },
   {
-    id: 4,
+    id: uuidv4(),
     date: 'July 6th',
     day: 'Tuesday',
     title: 'Movie Park',
@@ -43,7 +45,7 @@ const db = [
     address: 'Movie Park, Bottrop'
   },
   {
-    id: 5,
+    id: uuidv4(),
     date: 'October 31st',
     day: 'Monday',
     title: 'Halloween Party at my House',
@@ -69,7 +71,7 @@ router.post('/', (req, res) => {
     const tags = req.body.tags;
 
     const newPost = {
-      id: db.length + 1,
+      id: uuidv4(),
       date: month + ' ' + date,
       day: day,
       title: title,
@@ -86,12 +88,50 @@ router.post('/', (req, res) => {
   }
 });
 
-router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  res.status(200).json({
-    id: id,
-    name: 'something',
-  });
+
+router.get('/:id', (req, res) => {
+  const { id } = req.params.id;
+
+try {
+  const selectedObject = db.find((object) => object.id === id);
+  res.status(200).send(selectedObject);
+} catch (error) {
+  res.status(400).json({ message: 'Something went wrong!', error: error.message });
+}
+});
+
+
+// router.delete('/:id', (req, res) => {
+//   try {
+//     const id = req.params.id;
+    
+//     db = db.filter((object) => {
+//       object.id !== id
+//     });
+//     res.status(200).send('Object deleted successfully!');
+//   } catch (error) {
+//     res.status(400).json({ message: 'Something went wrong!', error: error.message });
+//   }
+// });
+
+router.patch("/:id", (req, res) => {
+  try {
+  const id = req.params.id;
+
+  const selectedObject = db.find((object) => object.id === id);
+  
+  selectedObject.title = req.body.title;
+  selectedObject.text = req.body.text;
+  selectedObject.date = req.body.date;
+  selectedObject.day = req.body.day;
+  selectedObject.month = req.body.month;
+  selectedObject.address = req.body.address;
+  selectedObject.tags = req.body.tags;
+
+  res.status(200).send('Object updated successfully!');
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong!', error: error.message });
+  }
 });
 
 export default router;

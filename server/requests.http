@@ -3,18 +3,53 @@ GET http://localhost:5007/api
 
 ###
 
-POST http://localhost:5006/api
+GET http://localhost:5007/api/f3eff513-eae6-4371-ba3b-ae1579d7299e
+# GET single object from the API
+
+###
+
+POST http://localhost:5007/api
 Content-Type: application/json
 
 {
     "title": "hello",
-    "text": "world"
+    "text": "world",
+    "tags": "what, ever, good"
 }
 
 ###
-DELETE http://localhost:5006/api/
+DELETE http://localhost:5007/api/196d95eb-26b3-48ad-aeed-c54c5b6eb6b9
 # Deletes a post
 
 ###
 
+PATCH http://localhost:5007/api/d8e14c1f-d40e-4bf7-8422-c8ec235bc43a
+Content-Type: application/json
 
+{
+    "title": "hello",
+    "text": "HalalBratwurst",
+    "tags": ["what, ever, good"]
+}
+
+#### 
+
+
+GET http://localhost:5007/posts
+Content-Type: application/json
+
+###
+
+POST http://localhost:5007/posts
+Content-Type: application/json
+
+{
+   "date":"2nd",
+   "month":"April",
+   "day":"Thursday",
+   "title":"My Henna Tattoo",
+   "img":"http://localhost:5007/images/henna.png",
+   "text":"Quae asperiores quis, facilis ad expedita in perferendis commodi fugit cumque quod unde, ipsam tempora aliquam, qui corrupti recusandae! Recusandae, praesentium reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias temporibus cum labore praesentium nemo eum, ratione, consequuntur accusamus quaerat laboriosam, totam quod quos distinctio expedita aliquam ea sed minima voluptates.",
+   "tags":"henna, beauty",
+   "address":"Ras Al Hanut 33, Casablanca"
+}
