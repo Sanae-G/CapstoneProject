@@ -27,8 +27,8 @@ function CreatePage() {
     }).then(() => {
       console.log('add new post');
       console.log(post);
+      handleClick();
     });
-    handleClick();
   }
 
   function handleClick() {
