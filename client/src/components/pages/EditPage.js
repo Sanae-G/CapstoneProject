@@ -46,6 +46,7 @@ function EditPage() {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(post),
+    }).then(() => {
     });
     handleClick();
   }
