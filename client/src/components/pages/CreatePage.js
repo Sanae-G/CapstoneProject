@@ -15,7 +15,6 @@ function CreatePage() {
   const [date, setDate] = useState('');
   const [address, setAddress] = useState('');
   const [tags, setTags] = useState('');
- 
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,8 +36,8 @@ function CreatePage() {
   }
 
   return (
-    <Container>
-      <CreateForm>
+    <>
+      <Container>
         <h1> Keep My Travel Memory</h1>
         <form onSubmit={handleSubmit}>
           <label id="Timing-label">Timing:</label>
@@ -83,22 +82,28 @@ function CreatePage() {
             value={tags}
             onChange={e => setTags(e.target.value)}
           ></input>
-          <button>Keep Memory</button>
+          <CreateButton>Keep Memory</CreateButton>
         </form>
-      </CreateForm>
-      <CancelButton onClick={handleClick}>Forget it</CancelButton>
-    </Container>
+        <CancelButton onClick={handleClick}>Forget it</CancelButton>
+      </Container>
+    </>
   );
 }
 
 export default CreatePage;
 
-const CreateForm = styled.div`
+const Container = styled.div`
   max-width: 100%;
-  margin: 0 auto;
+  margin: 10% auto;
+  padding: 5vh 5vw;
   text-align: center;
 
   @media only screen and (min-width: 1200px) {
+    max-width: 70%;
+    padding: 1vh 10vw;
+  }
+
+  @media only screen and (min-width: 810px) {
     max-width: 70%;
   }
 
@@ -138,17 +143,6 @@ const CreateForm = styled.div`
     padding: 5px;
     font-family: 'Poppins', sans-serif;
   }
-
-  button {
-    margin-top: 1rem;
-    width: 9rem;
-    background-color: #8edfe4;
-    color: #000;
-    border: 0;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
 `;
 
 const DateBox = styled.div`
@@ -157,22 +151,15 @@ const DateBox = styled.div`
   gap: 1.3rem;
 `;
 
-const Container = styled.div`
-margin: 2rem 7% 0;
-margin-bottom: 4rem;
-padding-top: 2rem;
-
-@media only screen and (min-width: 768px) {
-    padding-left: 6.25rem;
-    padding-right: 6.25rem;
-}
-
-@media only screen and (min-width: 1200px) {
-    padding-left: 15rem;
-    padding-right: 15rem;
-}
-
-}
+const CreateButton = styled.button`
+  margin-top: 1rem;
+  width: 9rem;
+  background-color: #8edfe4;
+  color: #000;
+  border: 0;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
 `;
 
 const CancelButton = styled.button`
