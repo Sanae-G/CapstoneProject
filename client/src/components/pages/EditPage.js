@@ -32,12 +32,12 @@ function EditPage() {
             setMonth(data.month) +
             setDate(data.date) +
             setAddress(data.address) +
-            setTags(data.tags)
+            setTags(data.tags.join(' '))
         );
     };
     getSinglePost();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+  console.log(tags);
   function handleUpdate(e) {
     e.preventDefault();
     const post = { day, title, text, date, month, address, tags };
@@ -46,11 +46,13 @@ function EditPage() {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(post),
-    }).then(() => {
-      console.log('update post');
-      console.log(post);
-    });
-    handleClick();
+    })
+      .then(data => data.json())
+      .then(data => {
+        console.log('update post');
+        console.log(data);
+        handleClick();
+      });
   }
 
   function handleClick() {
