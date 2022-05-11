@@ -23,7 +23,6 @@ const port = process.env.PORT || 5007;
 
 app.use(express.json());
 
-
 //serve API from MongoDB
 app.use('/posts', postsRoutes);
 

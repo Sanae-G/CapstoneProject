@@ -68,15 +68,15 @@ describe('CreatePage', () => {
     userEvent.type(selectMonth, 'February');
     userEvent.type(selectDay, 'Friday');
     userEvent.click(submitButton);
-    
+
     expect(handleCreate).toHaveBeenCalledWith({
       day: 'Friday',
       title: 'My Travel Memory',
       text: 'Whatever...',
       date: '3rd',
       month: 'February',
-      address: "",
-      tags: ""
+      address: '',
+      tags: '',
     });
   });
 });
@@ -114,7 +114,6 @@ describe('Months', () => {
 
     expect(numberOfOptions).toBe(13);
   });
-
 });
 
 describe('Days', () => {
@@ -133,5 +132,3 @@ describe('Days', () => {
     expect(numberOfOptions).toBe(8);
   });
 });
-
-

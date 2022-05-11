@@ -53,3 +53,8 @@ Content-Type: application/json
    "tags":"henna, beauty",
    "address":"Ras Al Hanut 33, Casablanca"
 }
+
+###
+
+DELETE http://localhost:5007/posts/627b809ce6fa76d10d87d694
+Content-Type: application/json

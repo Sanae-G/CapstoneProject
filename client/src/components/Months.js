@@ -23,7 +23,9 @@ function Months({ month, setMonth }) {
           Month
         </option>
         {months.map(_month => (
-          <option key={_month} value={_month}>{_month}</option>
+          <option key={_month} value={_month}>
+            {_month}
+          </option>
         ))}
       </SelectStyle>
     </>

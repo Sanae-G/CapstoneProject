@@ -11,7 +11,9 @@ function Days({ day, setDay }) {
         </option>
 
         {days.map(_day => (
-          <option key={_day} value={_day}>{_day}</option>
+          <option key={_day} value={_day}>
+            {_day}
+          </option>
         ))}
       </SelectStyle>
     </>
