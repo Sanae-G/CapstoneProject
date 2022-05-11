@@ -11,7 +11,15 @@ import {
 import AdressIcon from '../../icons/adress';
 import { NavLink } from 'react-router-dom';
 
-function PostCard({ moments }) {
+function PostCard({ moments, setMoments }) {
+  function handleDeleteClick(_id) {
+    fetch(`/posts/${_id}`, { method: 'DELETE' }).then(() => {
+      fetch('/posts')
+        .then(res => res.json())
+        .then(data => setMoments(data)); // eslint-disable-next-line
+    });
+  }
+
   return (
     <ul>
       {moments &&
@@ -19,7 +27,9 @@ function PostCard({ moments }) {
           <Container key={moment._id}>
             <DateBox>
               <DecoLine />
-              <h2>{moment.month} {moment.date}</h2>
+              <h2>
+                {moment.month} {moment.date}
+              </h2>
               <DecoLine />
             </DateBox>
             <StyledParagraph>{moment.day}</StyledParagraph>
@@ -30,13 +40,17 @@ function PostCard({ moments }) {
             </TextBox>
             <TagBox>
               {moment.tags &&
-                moment.tags.map(subtag => subtag !== '' ? (
-                  <li key={subtag}>
-                    <Tag>
-                      <p>{subtag}</p>
-                    </Tag>
-                  </li>
-                ) : '')}
+                moment.tags.map(subtag =>
+                  subtag !== '' ? (
+                    <li key={subtag}>
+                      <Tag>
+                        <p>{subtag}</p>
+                      </Tag>
+                    </li>
+                  ) : (
+                    ''
+                  )
+                )}
             </TagBox>
             {moment.address !== '' ? (
               <PlaceBox>
@@ -49,6 +63,9 @@ function PostCard({ moments }) {
             <NavLink to={`/update/${moment._id}`}>
               <button>Edit</button>
             </NavLink>
+            <button type="button" onClick={() => handleDeleteClick(moment._id)}>
+              Delete
+            </button>
           </Container>
         ))}
     </ul>

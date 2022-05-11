@@ -15,7 +15,7 @@ function JournalPage() {
   return (
     <>
       <JournalHeader />
-      <PostCard moments={moments} />
+      <PostCard moments={moments} setMoments={setMoments} />
       <Navbar />
     </>
   );
