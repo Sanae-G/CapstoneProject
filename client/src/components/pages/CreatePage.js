@@ -81,7 +81,7 @@ function CreatePage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    handleSubmitFile()
     const post = { day, title, text, date, month, address, tags, img };
 
     fetch('/posts', {
@@ -100,8 +100,7 @@ function CreatePage() {
     navigate('/');
   }
 
-  function handleSubmitFile(e) {
-    e.preventDefault();
+  function handleSubmitFile() {
 
     if (!selectedFile) return;
         const reader = new FileReader();
@@ -177,7 +176,6 @@ function CreatePage() {
         ></input>
         <CreateButton>Keep Memory</CreateButton>
       </form>
-      <form onSubmit={handleSubmitFile} className="form">
             <input
                 id="fileInput"
                 type="file"
@@ -186,10 +184,6 @@ function CreatePage() {
                 value={fileInputState}
                 className="form-input"
             />
-            <button className="btn" type="submit">
-                Submit
-            </button>
-        </form>
       <CancelButton onClick={handleClick}>Forget it</CancelButton>
     </Container>
   );
