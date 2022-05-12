@@ -14,6 +14,7 @@ export const createPost = (req, res) => {
     const text = req.body.text;
     const address = req.body.address;
     const tags = req.body.tags;
+    const img = req.body.img;
 
 
     const newPost = new Post(
@@ -22,7 +23,7 @@ export const createPost = (req, res) => {
             month: month,
             day: day,
             title: title,
-            img: '',
+            img: img,
             text: text,
             tags: tags.split(','),
             address: address
@@ -46,9 +47,10 @@ export const updatePost = (req, res, next) => {
     const text = req.body.text;
     const address = req.body.address;
     const tags = req.body.tags.split(',');
+    const img = req.body.img;
 
 
-    Post.findByIdAndUpdate(id, {date, month, day, title, text, address, tags}, { new: true })
+    Post.findByIdAndUpdate(id, {date, month, day, title, text, address, tags, img}, { new: true })
       .then((data) => {
         res.status(200).send(data);
       })

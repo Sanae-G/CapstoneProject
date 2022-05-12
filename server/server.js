@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import cors from 'cors';
 
 import dotenv from 'dotenv';
 
@@ -10,6 +11,8 @@ import api from './routes/api.js';
 
 import connectDB from './config/db.js';
 // import Post from './models/postsModel.js';
+
+const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 
 dotenv.config();
 
@@ -22,6 +25,24 @@ const app = express();
 const port = process.env.PORT || 5007;
 
 app.use(express.json());
+
+var whitelist = ['http://localhost:5007', 
+`https://api.cloudinary.com/v1_1/${CLOUDNAME}/image/upload`]
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+ 
+app.post(`https://api.cloudinary.com/v1_1/${CLOUDNAME}/image/upload`, 
+cors(corsOptions), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for a whitelisted domain.'})
+})
+
 
 //serve API from MongoDB
 app.use('/posts', postsRoutes);
