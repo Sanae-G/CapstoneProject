@@ -5,9 +5,6 @@ import Days from '../Days';
 import Months from '../Months';
 import Date from '../Date';
 
-const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
-const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
-
 
 function CreatePage() {
   const navigate = useNavigate();
@@ -22,33 +19,68 @@ function CreatePage() {
   const [img, setImg] = useState('');
 
  
-function upload(event) {
-  const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/image/upload`
-  const formData = new FormData()
-  formData.append('file', event.target.files[0])
-  formData.append('upload_preset', PRESET)
 
-  const data = fetch(url, {
-    method: 'POST',
-    body: formData,
-    headers: {
-      'Content-type': 'multipart/form-data',
-    },
-  }).then(res => res.json() + onImageSave);
+  const [fileInputState, setFileInputState] = useState('');
+    const [previewSource, setPreviewSource] = useState('');
+    const [selectedFile, setSelectedFile] = useState();
 
-  console.log('data', data)
+    const handleFileInputChange = (e) => {
+      const file = e.target.files[0];
+      previewFile(file);
+      setSelectedFile(file);
+      setFileInputState(e.target.value);
+  };
+
+  const previewFile = (file) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+          setPreviewSource(reader.result);
+      };
+  };
+
+
+
+
+  const uploadImage = async (base64EncodedImage) => {
+    try {
+        await fetch('/upload', {
+            method: 'POST',
+            body: JSON.stringify({ data: base64EncodedImage }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        setFileInputState('');
+        setPreviewSource('');
+        setImg(base64EncodedImage);
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+// function upload(event) {
+//   const url = '/upload'
+//   const formData = new FormData()
+//   formData.append('file', event.target.files[0])
+//   formData.append('upload_preset', PRESET)
+
+//   const data = fetch(url, {
+//     method: 'POST',
+//     body: formData,
+//     headers: {
+//       'Content-type': 'multipart/form-data',
+//     },
+//   }).then(res => res.json() + onImageSave);
+
+//   console.log('data', data)
   
-}
+// }
 
-function onImageSave(response) {
-  setImg(response.data.url)
-}
+// function onImageSave(response) {
+//   setImg(response.data.url)
+// }
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    // if(!selectedFile) return;
-    // uploadImage(preview);
 
     const post = { day, title, text, date, month, address, tags, img };
 
@@ -68,6 +100,19 @@ function onImageSave(response) {
     navigate('/');
   }
 
+  function handleSubmitFile(e) {
+    e.preventDefault();
+
+    if (!selectedFile) return;
+        const reader = new FileReader();
+        reader.readAsDataURL(selectedFile);
+        reader.onloadend = () => {
+            uploadImage(reader.result);
+        };
+        reader.onerror = () => {
+            console.error('AHHHHHHHH!!');
+        };
+      }
   return (
     <Container>
       <h1> Keep My Travel Memory</h1>
@@ -88,12 +133,23 @@ function onImageSave(response) {
           required
           value={title}
           onChange={e => setTitle(e.target.value)}
-        ></input>
-        {img ? (
-        <img src={img} alt="" style={{ width: '100%' }} />
-      ) : (
-        <input type="file" name="file" onChange={upload} />
-      )}
+        >
+        </input>
+        {previewSource && (
+                <img
+                    src={previewSource}
+                    alt="chosen"
+                    style={{ height: '300px' }}
+                />
+            )}  
+                {/* <input
+                    id="fileInput"
+                    type="file"
+                    name="image"
+                    onChange={handleFileInputChange}
+                    value={fileInputState}
+                    className="form-input"
+                /> */}
         <label id="travelMemory">My memorable Travel Experience:</label>
         <textarea
           aria-labelledby="travelMemory"
@@ -121,6 +177,19 @@ function onImageSave(response) {
         ></input>
         <CreateButton>Keep Memory</CreateButton>
       </form>
+      <form onSubmit={handleSubmitFile} className="form">
+            <input
+                id="fileInput"
+                type="file"
+                name="image"
+                onChange={handleFileInputChange}
+                value={fileInputState}
+                className="form-input"
+            />
+            <button className="btn" type="submit">
+                Submit
+            </button>
+        </form>
       <CancelButton onClick={handleClick}>Forget it</CancelButton>
     </Container>
   );
