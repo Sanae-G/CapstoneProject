@@ -149,6 +149,15 @@ function CreatePage() {
                     value={fileInputState}
                     className="form-input"
                 /> */}
+         <input
+                id="fileInput"
+                type="file"
+                name="image"
+                onChange={handleFileInputChange}
+                value={fileInputState}
+                className="form-input"
+                accept = "image/png, image/jpeg, image/jpg"
+            />
         <label id="travelMemory">My memorable Travel Experience:</label>
         <textarea
           aria-labelledby="travelMemory"
@@ -176,14 +185,6 @@ function CreatePage() {
         ></input>
         <CreateButton>Keep Memory</CreateButton>
       </form>
-            <input
-                id="fileInput"
-                type="file"
-                name="image"
-                onChange={handleFileInputChange}
-                value={fileInputState}
-                className="form-input"
-            />
       <CancelButton onClick={handleClick}>Forget it</CancelButton>
     </Container>
   );
