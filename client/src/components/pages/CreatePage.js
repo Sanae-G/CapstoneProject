@@ -5,9 +5,12 @@ import Days from '../Days';
 import Months from '../Months';
 import Date from '../Date';
 
+const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
+const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
+
+
 function CreatePage() {
   const navigate = useNavigate();
-  const url = '/posts';
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
@@ -15,12 +18,41 @@ function CreatePage() {
   const [date, setDate] = useState('');
   const [address, setAddress] = useState('');
   const [tags, setTags] = useState('');
+  // const [fileInput, setFileInput] = useState('');
+  const [img, setImg] = useState('');
+
+ 
+function upload(event) {
+  const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/image/upload`
+  const formData = new FormData()
+  formData.append('file', event.target.files[0])
+  formData.append('upload_preset', PRESET)
+
+  const data = fetch(url, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Content-type': 'multipart/form-data',
+    },
+  }).then(res => res.json() + onImageSave);
+
+  console.log('data', data)
+  
+}
+
+function onImageSave(response) {
+  setImg(response.data.url)
+}
 
   function handleSubmit(e) {
     e.preventDefault();
-    const post = { day, title, text, date, month, address, tags };
 
-    fetch(url, {
+    // if(!selectedFile) return;
+    // uploadImage(preview);
+
+    const post = { day, title, text, date, month, address, tags, img };
+
+    fetch('/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(post),
@@ -30,6 +62,7 @@ function CreatePage() {
       handleClick();
     });
   }
+  
 
   function handleClick() {
     navigate('/');
@@ -56,6 +89,11 @@ function CreatePage() {
           value={title}
           onChange={e => setTitle(e.target.value)}
         ></input>
+        {img ? (
+        <img src={img} alt="" style={{ width: '100%' }} />
+      ) : (
+        <input type="file" name="file" onChange={upload} />
+      )}
         <label id="travelMemory">My memorable Travel Experience:</label>
         <textarea
           aria-labelledby="travelMemory"
