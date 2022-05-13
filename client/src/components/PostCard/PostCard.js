@@ -10,6 +10,7 @@ import {
 } from './PostCard.styles';
 import AdressIcon from '../../icons/adress';
 import { NavLink } from 'react-router-dom';
+import Img from '../Img.js';
 
 function PostCard({ moments, setMoments }) {
   function handleDeleteClick(_id) {
@@ -34,8 +35,8 @@ function PostCard({ moments, setMoments }) {
             </DateBox>
             <StyledParagraph>{moment.day}</StyledParagraph>
             <h3>{moment.title}</h3>
-            <p>{moment.img}</p>
-            {moment.img !== '' ? <img src={moment.img} alt="moment" /> : ''}
+            {moment.img !== '' ? 
+            <Img imageID={moment.img}/> : ''}
             <TextBox>
               <p>{moment.text}</p>
             </TextBox>
