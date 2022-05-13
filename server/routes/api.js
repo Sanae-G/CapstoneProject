@@ -98,18 +98,6 @@ router.get('/:id', (req, res) => {
   }
 });
 
-// router.delete('/:id', (req, res) => {
-//   try {
-//     const id = req.params.id;
-
-//     db = db.filter((object) => {
-//       object.id !== id
-//     });
-//     res.status(200).send('Object deleted successfully!');
-//   } catch (error) {
-//     res.status(400).json({ message: 'Something went wrong!', error: error.message });
-//   }
-// });
 
 router.patch('/:id', (req, res) => {
   try {

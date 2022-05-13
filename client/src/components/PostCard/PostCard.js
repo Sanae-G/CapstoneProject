@@ -34,6 +34,7 @@ function PostCard({ moments, setMoments }) {
             </DateBox>
             <StyledParagraph>{moment.day}</StyledParagraph>
             <h3>{moment.title}</h3>
+            <p>{moment.img}</p>
             {moment.img !== '' ? <img src={moment.img} alt="moment" /> : ''}
             <TextBox>
               <p>{moment.text}</p>

@@ -51,12 +51,17 @@ function CreatePage() {
         });
         setFileInputState('');
         setPreviewSource('');
-        setImg(base64EncodedImage);
+        onImageSave();
     } catch (err) {
         console.error(err);
     }
 };
 
+function onImageSave(res) {
+  setImg(res.body.public_id)
+}
+
+console.log(img)
 // function upload(event) {
 //   const url = '/upload'
 //   const formData = new FormData()
@@ -81,8 +86,10 @@ function CreatePage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleSubmitFile()
-    const post = { day, title, text, date, month, address, tags, img };
+    const reader = new FileReader();
+        reader.readAsDataURL(selectedFile);
+        reader.onloadend = () => {
+            const post = { day, title, text, date, month, address, tags, base64EncodedImage: reader.result };
 
     fetch('/posts', {
       method: 'POST',
@@ -93,6 +100,8 @@ function CreatePage() {
       console.log(post);
       handleClick();
     });
+        };
+    
   }
   
 
@@ -100,18 +109,7 @@ function CreatePage() {
     navigate('/');
   }
 
-  function handleSubmitFile() {
-
-    if (!selectedFile) return;
-        const reader = new FileReader();
-        reader.readAsDataURL(selectedFile);
-        reader.onloadend = () => {
-            uploadImage(reader.result);
-        };
-        reader.onerror = () => {
-            console.error('AHHHHHHHH!!');
-        };
-      }
+  
   return (
     <Container>
       <h1> Keep My Travel Memory</h1>
