@@ -4,10 +4,12 @@ import PostCard from '../PostCard/PostCard';
 import Navbar from '../Navbar/Navbar';
 import ScrollUpButton from '../ScrollUpButton';
 import SearchInput from '../SearchInput';
+import SortButton from '../SortButton';
 
 function JournalPage() {
   let [moments, setMoments] = useState([]);
   let [filteredPosts, setFilteredPosts] = useState(moments);
+  const [chronological, setChronological] = useState(true);
 
   useEffect(() => {
     fetch('/posts')
@@ -21,16 +23,19 @@ function JournalPage() {
   return (
     <>
       <JournalHeader />
+      <SortButton chronological={chronological} setChronological={setChronological} />
       <PostCard
         moments={moments}
         setMoments={setMoments}
         filteredPosts={filteredPosts}
         setFilteredPosts={setFilteredPosts}
+        chronological={chronological}
+        setChronological={setChronological}
       />
       <ScrollUpButton />
       <SearchInput
         moments={moments}
-        setMoments = {setMoments}
+        setMoments={setMoments}
         filteredPosts={filteredPosts}
         setFilteredPosts={setFilteredPosts}
       />
