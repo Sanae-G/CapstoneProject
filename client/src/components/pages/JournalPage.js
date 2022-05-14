@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import JournalHeader from '../Header/JournalHeader';
 import PostCard from '../PostCard/PostCard';
 import Navbar from '../Navbar/Navbar';
+import ScrollUpButton from '../ScrollUpButton';
 
 function JournalPage() {
   let [moments, setMoments] = useState([]);
@@ -16,6 +17,7 @@ function JournalPage() {
     <>
       <JournalHeader />
       <PostCard moments={moments} setMoments={setMoments} />
+      <ScrollUpButton />
       <Navbar />
     </>
   );
