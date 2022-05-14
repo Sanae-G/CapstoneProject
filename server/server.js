@@ -32,7 +32,7 @@ app.post('/upload', async (req, res, next) => {
       upload_preset: cloudinaryPreset,
       allowed_formats: ['png', 'jpeg', 'jpg'],
     });
-    console.log(uploadedResponse.public_id);
+    console.log(uploadedResponse.url);
   } catch (error) {
     console.error(error);
     res.status(500).json({ err: 'Something went wrong!' });

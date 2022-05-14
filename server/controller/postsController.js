@@ -38,7 +38,7 @@ export const createPost = async (req, res) => {
     month: month,
     day: day,
     title: title,
-    img: uploadedResponse.public_id,
+    img: uploadedResponse.url,
     text: text,
     tags: tags.split(','),
     address: address,

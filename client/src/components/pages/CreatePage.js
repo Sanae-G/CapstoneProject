@@ -5,7 +5,6 @@ import Days from '../Days';
 import Months from '../Months';
 import Date from '../Date';
 
-
 function CreatePage() {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
@@ -15,101 +14,58 @@ function CreatePage() {
   const [date, setDate] = useState('');
   const [address, setAddress] = useState('');
   const [tags, setTags] = useState('');
-  // const [fileInput, setFileInput] = useState('');
-  const [img, setImg] = useState('');
-
- 
 
   const [fileInputState, setFileInputState] = useState('');
-    const [previewSource, setPreviewSource] = useState('');
-    const [selectedFile, setSelectedFile] = useState();
+  const [previewSource, setPreviewSource] = useState('');
+  const [selectedFile, setSelectedFile] = useState();
 
-    const handleFileInputChange = (e) => {
-      const file = e.target.files[0];
-      previewFile(file);
-      setSelectedFile(file);
-      setFileInputState(e.target.value);
+  const handleFileInputChange = e => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
   };
 
-  const previewFile = (file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-          setPreviewSource(reader.result);
-      };
+  const previewFile = file => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
   };
-
-
-
-
-  const uploadImage = async (base64EncodedImage) => {
-    try {
-        await fetch('/upload', {
-            method: 'POST',
-            body: JSON.stringify({ data: base64EncodedImage }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-        setFileInputState('');
-        setPreviewSource('');
-        onImageSave();
-    } catch (err) {
-        console.error(err);
-    }
-};
-
-function onImageSave(res) {
-  setImg(res.body.public_id)
-}
-
-console.log(img)
-// function upload(event) {
-//   const url = '/upload'
-//   const formData = new FormData()
-//   formData.append('file', event.target.files[0])
-//   formData.append('upload_preset', PRESET)
-
-//   const data = fetch(url, {
-//     method: 'POST',
-//     body: formData,
-//     headers: {
-//       'Content-type': 'multipart/form-data',
-//     },
-//   }).then(res => res.json() + onImageSave);
-
-//   console.log('data', data)
-  
-// }
-
-// function onImageSave(response) {
-//   setImg(response.data.url)
-// }
 
   function handleSubmit(e) {
     e.preventDefault();
     const reader = new FileReader();
-        reader.readAsDataURL(selectedFile);
-        reader.onloadend = () => {
-            const post = { day, title, text, date, month, address, tags, base64EncodedImage: reader.result };
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      const post = {
+        day,
+        title,
+        text,
+        date,
+        month,
+        address,
+        tags,
+        base64EncodedImage: reader.result,
+      };
 
-    fetch('/posts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(post),
-    }).then(() => {
-      console.log('add new post');
-      console.log(post);
-      handleClick();
-    });
-        };
-    
+      fetch('/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(post),
+      }).then(() => {
+        console.log('add new post');
+        console.log(post);
+        handleClick();
+      });
+    };
   }
-  
 
   function handleClick() {
     navigate('/');
   }
 
-  
   return (
     <Container>
       <h1> Keep My Travel Memory</h1>
@@ -130,32 +86,17 @@ console.log(img)
           required
           value={title}
           onChange={e => setTitle(e.target.value)}
-        >
-        </input>
-        {previewSource && (
-                <img
-                    src={previewSource}
-                    alt="chosen"
-                    style={{ height: '300px' }}
-                />
-            )}  
-                {/* <input
-                    id="fileInput"
-                    type="file"
-                    name="image"
-                    onChange={handleFileInputChange}
-                    value={fileInputState}
-                    className="form-input"
-                /> */}
-         <input
-                id="fileInput"
-                type="file"
-                name="image"
-                onChange={handleFileInputChange}
-                value={fileInputState}
-                className="form-input"
-                accept = "image/png, image/jpeg, image/jpg"
-            />
+        ></input>
+        {previewSource && <img src={previewSource} alt="chosen" style={{ height: '300px' }} />}
+        <input
+          id="fileInput"
+          type="file"
+          name="image"
+          onChange={handleFileInputChange}
+          value={fileInputState}
+          className="form-input"
+          accept="image/png, image/jpeg, image/jpg"
+        />
         <label id="travelMemory">My memorable Travel Experience:</label>
         <textarea
           aria-labelledby="travelMemory"
