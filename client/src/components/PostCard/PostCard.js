@@ -11,38 +11,39 @@ import {
 import AdressIcon from '../../icons/adress';
 import { NavLink } from 'react-router-dom';
 
-
-function PostCard({ moments, setMoments }) {
+function PostCard({ setMoments, moments, filteredPosts, setFilteredPosts }) {
   function handleDeleteClick(_id) {
     fetch(`/posts/${_id}`, { method: 'DELETE' }).then(() => {
       fetch('/posts')
         .then(res => res.json())
-        .then(data => setMoments(data)); // eslint-disable-next-line
+        .then(data => {
+          setMoments(data);
+          setFilteredPosts(data);
+        }); // eslint-disable-next-line
     });
   }
 
   return (
     <ul>
-      {moments &&
-        moments.map(moment => (
-          <Container key={moment._id}>
+      {filteredPosts &&
+        filteredPosts.map(post => (
+          <Container key={post._id}>
             <DateBox>
               <DecoLine />
               <h2>
-                {moment.month} {moment.date}
+                {post.month} {post.date}
               </h2>
               <DecoLine />
             </DateBox>
-            <StyledParagraph>{moment.day}</StyledParagraph>
-            <h3>{moment.title}</h3>
-            {moment.img !== '' ? 
-            <img src={moment.img} width="150px" alt = "moment"></img> : ''}
+            <StyledParagraph>{post.day}</StyledParagraph>
+            <h3>{post.title}</h3>
+            {post.img !== '' ? <img src={post.img} width="150px" alt="moment"></img> : ''}
             <TextBox>
-              <p>{moment.text}</p>
+              <p>{post.text}</p>
             </TextBox>
             <TagBox>
-              {moment.tags &&
-                moment.tags.map(subtag =>
+              {post.tags &&
+                post.tags.map(subtag =>
                   subtag !== '' ? (
                     <li key={subtag}>
                       <Tag>
@@ -54,18 +55,18 @@ function PostCard({ moments, setMoments }) {
                   )
                 )}
             </TagBox>
-            {moment.address !== '' ? (
+            {post.address !== '' ? (
               <PlaceBox>
                 <AdressIcon />
-                <p>{moment.address}</p>
+                <p>{post.address}</p>
               </PlaceBox>
             ) : (
               ''
             )}
-            <NavLink to={`/update/${moment._id}`}>
+            <NavLink to={`/update/${post._id}`}>
               <button>Edit</button>
             </NavLink>
-            <button type="button" onClick={() => handleDeleteClick(moment._id)}>
+            <button type="button" onClick={() => handleDeleteClick(post._id)}>
               Delete
             </button>
           </Container>
