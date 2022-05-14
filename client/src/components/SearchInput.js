@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
-function SearchInput({ moments, setFilteredPosts }) {
+function SearchInput({ moments, setMoments, setFilteredPosts }) {
   // const [searchButtonState, setSearchButtonState] = useState(false);
   const [value, setValue] = useState('');
 
@@ -16,7 +16,15 @@ function SearchInput({ moments, setFilteredPosts }) {
     );
   }
 
-  function handleReset() {}
+  async function handleReset() {
+    await fetch('/posts')
+      .then(res => res.json())
+      .then(data => {
+        setMoments(data);
+        setFilteredPosts(data);
+        setValue('');
+      });
+  }
 
   return (
     <StyledForm onSubmit={handleSearch}>

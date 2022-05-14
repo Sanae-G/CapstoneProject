@@ -11,7 +11,7 @@ import {
 import AdressIcon from '../../icons/adress';
 import { NavLink } from 'react-router-dom';
 
-function PostCard({ setMoments, moments, filteredPosts, setFilteredPosts }) {
+function PostCard({ setMoments, filteredPosts, setFilteredPosts }) {
   function handleDeleteClick(_id) {
     fetch(`/posts/${_id}`, { method: 'DELETE' }).then(() => {
       fetch('/posts')

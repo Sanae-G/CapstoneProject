@@ -30,6 +30,7 @@ function JournalPage() {
       <ScrollUpButton />
       <SearchInput
         moments={moments}
+        setMoments = {setMoments}
         filteredPosts={filteredPosts}
         setFilteredPosts={setFilteredPosts}
       />
