@@ -11,6 +11,8 @@ import {
 import AdressIcon from '../../icons/adress';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import DeleteIcon from '../../icons/delete';
+import EditIcon from '../../icons/edit';
 
 function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological }) {
   function handleDeleteClick(_id) {
@@ -64,12 +66,14 @@ function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological }
             ) : (
               ''
             )}
+            <IconBox>
             <NavLink to={`/update/${post._id}`}>
-              <button>Edit</button>
+              <button><EditIcon /></button>
             </NavLink>
             <button type="button" onClick={() => handleDeleteClick(post._id)}>
-              Delete
+              <DeleteIcon />
             </button>
+            </IconBox>
           </Container>
         ))}
     </StyledUnorderedList>
@@ -81,4 +85,21 @@ export default PostCard;
 const StyledUnorderedList = styled.ul`
   display: flex;
   flex-direction: ${props => (props.chronological ? 'column' : 'column-reverse')};
+
+  button {
+    background: none;
+    border: none;
+    margin-right: 1rem;
+  }
+`;
+
+
+
+const IconBox = styled.div`
+  display: flex;
+  gap: 2%;
+
+  button{
+    cursor: pointer;
+  }
 `;

@@ -1,5 +1,7 @@
 // import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import ScrollUpIcon from '../icons/scrollUp';
+import styled from 'styled-components';
 
 function ScrollUpButton() {
   const [buttonState, setButtonState] = useState(false);
@@ -23,20 +25,22 @@ function ScrollUpButton() {
 
   return (
     buttonState && (
-      <button
-        style={{
-          position: 'fixed',
-          bottom: '80px',
-          left: '50px',
-          height: '50px',
-          width: '50px',
-        }}
-        onClick={scrollUp}
-      >
-        Up
-      </button>
+      <StyledButton onClick={scrollUp}>
+        <ScrollUpIcon />
+      </StyledButton>
     )
   );
 }
 
 export default ScrollUpButton;
+
+const StyledButton = styled.button`
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  height: 50px;
+  width: 50px;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;

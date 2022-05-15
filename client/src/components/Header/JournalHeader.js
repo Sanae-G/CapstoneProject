@@ -27,6 +27,7 @@ export const Header = styled.header`
     text-align: center;
     padding-top: 0;
     font-size: 1.5rem;
+    color: #614124;
   }
 
   p {
@@ -34,6 +35,7 @@ export const Header = styled.header`
     padding-top: 1rem;
     font-size: 1rem;
     padding-bottom: 5rem;
+    color: #614124;
   }
 `;
 
@@ -44,4 +46,5 @@ const StyledImg = styled.img`
   margin-left: auto;
   margin-right: auto;
   padding-top: 2rem;
+  opacity: 40%;
 `;
