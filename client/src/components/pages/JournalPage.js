@@ -4,7 +4,6 @@ import PostCard from '../PostCard/PostCard';
 import Navbar from '../Navbar/Navbar';
 import ScrollUpButton from '../ScrollUpButton';
 import SearchInput from '../SearchInput';
-import SortButton from '../SortButton';
 
 function JournalPage() {
   let [moments, setMoments] = useState([]);
@@ -23,7 +22,12 @@ function JournalPage() {
   return (
     <>
       <JournalHeader />
-      <SortButton chronological={chronological} setChronological={setChronological} />
+      <SearchInput
+        moments={moments}
+        setMoments={setMoments}
+        filteredPosts={filteredPosts}
+        setFilteredPosts={setFilteredPosts}
+      />
       <PostCard
         moments={moments}
         setMoments={setMoments}
@@ -33,13 +37,7 @@ function JournalPage() {
         setChronological={setChronological}
       />
       <ScrollUpButton />
-      <SearchInput
-        moments={moments}
-        setMoments={setMoments}
-        filteredPosts={filteredPosts}
-        setFilteredPosts={setFilteredPosts}
-      />
-      <Navbar />
+      <Navbar chronological={chronological} setChronological={setChronological} />
     </>
   );
 }

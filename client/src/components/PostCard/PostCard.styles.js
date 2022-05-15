@@ -1,25 +1,5 @@
 import styled from 'styled-components';
 
-export const Header = styled.header`
-  background-color: ${({ color }) => color};
-  margin: 0;
-  height: 9.7rem;
-  width: 100vw;
-
-  h1 {
-    text-align: center;
-    padding-top: 3.4rem;
-    font-size: 1.5rem;
-  }
-
-  p {
-    text-align: center;
-    padding-top: 1rem;
-    font-size: 1rem;
-    padding-bottom: 5rem;
-  }
-`;
-
 export const DecoLine = styled.div`
   width: 34%;
   height: 4px;

@@ -12,7 +12,7 @@ import AdressIcon from '../../icons/adress';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological}) {
+function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological }) {
   function handleDeleteClick(_id) {
     fetch(`/posts/${_id}`, { method: 'DELETE' }).then(() => {
       fetch('/posts')
@@ -25,7 +25,7 @@ function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological})
   }
 
   return (
-    <StyledUnorderedList chronological = {chronological}>
+    <StyledUnorderedList chronological={chronological}>
       {filteredPosts &&
         filteredPosts.map(post => (
           <Container key={post._id}>
@@ -78,7 +78,7 @@ function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological})
 
 export default PostCard;
 
-const StyledUnorderedList=styled.ul`
-display: flex;
-flex-direction: ${(props) => props.chronological ? 'column' : 'column-reverse'}
-`
+const StyledUnorderedList = styled.ul`
+  display: flex;
+  flex-direction: ${props => (props.chronological ? 'column' : 'column-reverse')};
+`;

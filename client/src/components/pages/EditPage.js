@@ -38,7 +38,7 @@ function EditPage() {
     getSinglePost();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   console.log(tags);
-  
+
   function handleUpdate(e) {
     e.preventDefault();
     const post = { day, title, text, date, month, address, tags };

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import SearchIcon from '../icons/search';
+import CancelationIcon from '../icons/cancelIcon';
 
 function SearchInput({ moments, setMoments, setFilteredPosts }) {
   // const [searchButtonState, setSearchButtonState] = useState(false);
@@ -28,14 +30,18 @@ function SearchInput({ moments, setMoments, setFilteredPosts }) {
 
   return (
     <StyledForm onSubmit={handleSearch}>
+      <SearchButton type="submit">
+        <SearchIcon />
+      </SearchButton>
       <input
         type="text"
         placeholder="Search..."
         value={value}
         onChange={event => setValue(event.target.value)}
       ></input>
-      <button type="submit">Search</button>
-      <button onClick={handleReset}>Reset</button>
+      <CancelButton onClick={handleReset}>
+        <CancelationIcon />
+      </CancelButton>
     </StyledForm>
   );
 }
@@ -43,18 +49,54 @@ function SearchInput({ moments, setMoments, setFilteredPosts }) {
 export default SearchInput;
 
 const StyledForm = styled.form`
-  position: fixed;
-  bottom: 80px;
-  right: 50px;
-  align-content: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 90%;
+  height: 3rem;
+  border-radius: 60px;
+  background-color: #f9f3ee;
+  margin: 1rem auto;
+  padding: 0 10px;
 
   input {
-    height: 50px;
-    width: 20rem;
+    background: transparent;
+    flex: 1;
+    height: 2.5rem;
+    width: 13rem;
+    border: none;
+    outline: none;
+    padding-left: 1rem;
+    color: black;
+    box-sizing: border-box;
+    font-size: 20px;
   }
+`;
 
-  button {
-    height: 50px;
-    width: 5rem;
+const SearchButton = styled.button`
+  border: 0;
+  height: 2.5rem;
+  width: 2.5rem;
+  cursor: pointer;
+  border-right: 1px solid #deb6ab;
+  background: transparent;
+
+  svg {
+    width: auto;
+    height: 1.7rem;
+  }
+`;
+
+const CancelButton = styled.button`
+  border: 0;
+  height: 2.5rem;
+  width: 2.5rem;
+  cursor: pointer;
+  background: transparent;
+  padding-left: 0.5rem;
+
+  svg {
+    width: auto;
+    height: 2rem;
   }
 `;
