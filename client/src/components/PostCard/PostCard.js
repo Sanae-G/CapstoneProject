@@ -100,6 +100,7 @@ const IconBox = styled.div`
   gap: 2%;
 
   button{
+    margin-top: 1.1rem;
     cursor: pointer;
   }
 `;
