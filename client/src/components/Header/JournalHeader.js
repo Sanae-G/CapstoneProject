@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 function JournalHeader({
   color = '#FFD6BA',
-  heading = 'Crazy Trip to Morocoo',
+  heading = 'Exciting Trip to Morocoo',
   period = '01.04 - 10.04.2022',
 }) {
   return (
