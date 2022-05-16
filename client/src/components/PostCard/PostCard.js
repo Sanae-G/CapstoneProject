@@ -11,6 +11,7 @@ import {
 import AdressIcon from '../../icons/adress';
 import { NavLink } from 'react-router-dom';
 
+
 function PostCard({ moments, setMoments }) {
   function handleDeleteClick(_id) {
     fetch(`/posts/${_id}`, { method: 'DELETE' }).then(() => {
@@ -34,7 +35,8 @@ function PostCard({ moments, setMoments }) {
             </DateBox>
             <StyledParagraph>{moment.day}</StyledParagraph>
             <h3>{moment.title}</h3>
-            {moment.img !== '' ? <img src={moment.img} alt="moment" /> : ''}
+            {moment.img !== '' ? 
+            <img src={moment.img} width="150px" alt = "moment"></img> : ''}
             <TextBox>
               <p>{moment.text}</p>
             </TextBox>

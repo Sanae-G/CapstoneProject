@@ -7,7 +7,6 @@ import Date from '../Date';
 
 function CreatePage() {
   const navigate = useNavigate();
-  const url = '/posts';
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
@@ -16,19 +15,49 @@ function CreatePage() {
   const [address, setAddress] = useState('');
   const [tags, setTags] = useState('');
 
+  const [fileInputState, setFileInputState] = useState('');
+  const [previewSource, setPreviewSource] = useState('');
+  const [selectedFile, setSelectedFile] = useState();
+
+  const handleFileInputChange = e => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
+  };
+
+  const previewFile = file => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
-    const post = { day, title, text, date, month, address, tags };
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      const post = {
+        day,
+        title,
+        text,
+        date,
+        month,
+        address,
+        tags,
+        base64EncodedImage: reader.result,
+      };
 
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(post),
-    }).then(() => {
-      console.log('add new post');
-      console.log(post);
-      handleClick();
-    });
+      fetch('/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(post),
+      }).then(() => {
+        handleClick();
+      });
+    };
   }
 
   function handleClick() {
@@ -56,6 +85,16 @@ function CreatePage() {
           value={title}
           onChange={e => setTitle(e.target.value)}
         ></input>
+        {previewSource && <img src={previewSource} alt="chosen" style={{ height: '300px' }} />}
+        <input
+          id="fileInput"
+          type="file"
+          name="image"
+          onChange={handleFileInputChange}
+          value={fileInputState}
+          className="form-input"
+          accept="image/png, image/jpeg, image/jpg"
+        />
         <label id="travelMemory">My memorable Travel Experience:</label>
         <textarea
           aria-labelledby="travelMemory"

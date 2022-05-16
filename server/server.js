@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-
+import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
 
 import postsRoutes from './routes/posts.js';
@@ -21,7 +21,23 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = process.env.PORT || 5007;
 
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+app.post('/upload', async (req, res, next) => {
+  try {
+    const image = req.body.data;
+    const uploadedResponse = await cloudinary.uploader.upload(image, {
+      upload_preset: cloudinaryPreset,
+      allowed_formats: ['png', 'jpeg', 'jpg'],
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ err: 'Something went wrong!' });
+  }
+  console.log('Accessing the upload section ...');
+  next(); // pass control to the next handler
+});
 
 //serve API from MongoDB
 app.use('/posts', postsRoutes);
