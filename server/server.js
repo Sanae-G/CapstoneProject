@@ -27,12 +27,10 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.post('/upload', async (req, res, next) => {
   try {
     const image = req.body.data;
-    console.log(image);
     const uploadedResponse = await cloudinary.uploader.upload(image, {
       upload_preset: cloudinaryPreset,
       allowed_formats: ['png', 'jpeg', 'jpg'],
     });
-    console.log(uploadedResponse.url);
   } catch (error) {
     console.error(error);
     res.status(500).json({ err: 'Something went wrong!' });
