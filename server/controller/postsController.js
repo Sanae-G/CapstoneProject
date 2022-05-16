@@ -1,11 +1,14 @@
 import Post from '../models/postsModel.js';
 import { v2 as cloudinary } from 'cloudinary';
 
-export const readPosts = (req, res) => {
-  Post.find({}).then(data => {
-    res.send(data);
-  });
-};
+export const readPosts = async (req, res) => {
+  try{
+    const posts = await Post.find({})
+    res.send(posts);
+  } catch (error){
+    res.status(500).send(error)
+  }
+  };
 
 export const createPost = async (req, res) => {
   const date = req.body.date;
