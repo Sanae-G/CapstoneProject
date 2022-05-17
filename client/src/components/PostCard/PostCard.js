@@ -16,8 +16,8 @@ import EditIcon from '../../icons/edit';
 
 function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological }) {
   function handleDeleteClick(_id) {
-    fetch(`/posts/${_id}`, { method: 'DELETE' }).then(() => {
-      fetch('/posts')
+    fetch(`https://capstone-sg.herokuapp.com/api/posts/${_id}`, { method: 'DELETE' }).then(() => {
+      fetch('https://capstone-sg.herokuapp.com/api/posts')
         .then(res => res.json())
         .then(data => {
           setMoments(data);
