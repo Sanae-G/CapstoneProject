@@ -39,8 +39,6 @@ app.post('/upload', async (req, res, next) => {
   next(); // pass control to the next handler
 });
 
-//serve API from MongoDB
-app.use('/posts', postsRoutes);
 
 app.use(express.static('public'));
 
@@ -49,6 +47,9 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Serve API
 app.use('/api', api);
+
+//serve API from MongoDB
+app.use('/api/posts', postsRoutes);
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
