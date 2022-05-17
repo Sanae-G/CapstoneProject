@@ -10,7 +10,7 @@ function EditPage() {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const url = `/posts`;
+  const url = `https://capstone-sg.herokuapp.com/api/posts`;
 
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
