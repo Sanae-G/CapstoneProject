@@ -8,7 +8,7 @@ function JournalHeader({
 }) {
   return (
     <Header color={color}>
-      <StyledImg src={decoration}></StyledImg>
+      <StyledImg src={decoration} />
       <h1>{heading}</h1>
       <p>{period}</p>
     </Header>

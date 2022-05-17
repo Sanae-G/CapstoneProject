@@ -4,7 +4,6 @@ import SearchIcon from '../icons/search';
 import CancelationIcon from '../icons/cancelIcon';
 
 function SearchInput({ moments, setMoments, setFilteredPosts }) {
-  // const [searchButtonState, setSearchButtonState] = useState(false);
   const [value, setValue] = useState('');
 
   function handleSearch(event) {

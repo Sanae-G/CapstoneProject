@@ -1,4 +1,3 @@
-// import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import ScrollUpIcon from '../icons/scrollUp';
 import styled from 'styled-components';

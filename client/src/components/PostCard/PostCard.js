@@ -40,7 +40,7 @@ function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological }
             </DateBox>
             <StyledParagraph>{post.day}</StyledParagraph>
             <h3>{post.title}</h3>
-            {post.img !== '' ? <img src={post.img} width="150px" alt="moment"></img> : ''}
+            {post.img !== '' && <img src={post.img} width="150px" alt="moment"></img>}
             <TextBox>
               <p>{post.text}</p>
             </TextBox>
@@ -67,12 +67,14 @@ function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological }
               ''
             )}
             <IconBox>
-            <NavLink to={`/update/${post._id}`}>
-              <button><EditIcon /></button>
-            </NavLink>
-            <button type="button" onClick={() => handleDeleteClick(post._id)}>
-              <DeleteIcon />
-            </button>
+              <NavLink to={`/update/${post._id}`}>
+                <button>
+                  <EditIcon />
+                </button>
+              </NavLink>
+              <button type="button" onClick={() => handleDeleteClick(post._id)}>
+                <DeleteIcon />
+              </button>
             </IconBox>
           </Container>
         ))}
@@ -93,13 +95,11 @@ const StyledUnorderedList = styled.ul`
   }
 `;
 
-
-
 const IconBox = styled.div`
   display: flex;
   gap: 2%;
 
-  button{
+  button {
     margin-top: 1.1rem;
     cursor: pointer;
   }

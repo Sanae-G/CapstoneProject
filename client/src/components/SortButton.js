@@ -7,8 +7,6 @@ function SortButton({ chronological, setChronological }) {
     setChronological(!chronological);
   }
 
-  console.log(chronological);
-
   return (
     <StyledButton onClick={handleChronology}>
       {chronological ? <ChronologicalOrderIcon /> : <AntichronologicalOrderIcon />}{' '}
