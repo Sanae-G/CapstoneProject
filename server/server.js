@@ -5,7 +5,7 @@ import { dirname } from 'path';
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
 
-import postsRoutes from './routes/posts.js';
+
 import api from './routes/api.js';
 
 import connectDB from './config/db.js';
@@ -48,8 +48,7 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 // Serve API
 app.use('/api', api);
 
-//serve API from MongoDB
-app.use('/api/posts', postsRoutes);
+
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {

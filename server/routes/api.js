@@ -1,5 +1,6 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
+import postsRoutes from './posts.js';
 const router = express.Router();
 
 const db = [
@@ -54,6 +55,9 @@ const db = [
     address: 'My Home',
   },
 ];
+
+//serve API from MongoDB
+router.use('/posts', postsRoutes);
 
 router.get('/', (req, res, next) => {
   res.status(200).json(db);
