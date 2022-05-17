@@ -18,7 +18,7 @@ function SearchInput({ moments, setMoments, setFilteredPosts }) {
   }
 
   async function handleReset() {
-    await fetch('/posts')
+    await fetch('https://capstone-sg.herokuapp.com/api/posts')
       .then(res => res.json())
       .then(data => {
         setMoments(data);
