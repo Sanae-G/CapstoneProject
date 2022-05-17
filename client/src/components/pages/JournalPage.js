@@ -11,7 +11,7 @@ function JournalPage() {
   const [chronological, setChronological] = useState(true);
 
   useEffect(() => {
-    fetch('/posts')
+    fetch('https://capstone-sg.herokuapp.com/api/posts')
       .then(res => res.json())
       .then(data => {
         setMoments(data);
