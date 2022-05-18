@@ -26,8 +26,6 @@ function RegisterPage() {
     });
   }
 
-  console.log(password);
-
   return (
     <>
       <StyledForm onSubmit={register}>

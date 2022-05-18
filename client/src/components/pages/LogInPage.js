@@ -1,31 +1,66 @@
-import styled from "styled-components";
-import GoogleIcon from "../../icons/google";
-import { NavLink } from "react-router-dom";
-import Photography from "../../images/photography";
+import styled from 'styled-components';
+import GoogleIcon from '../../icons/google';
+import { NavLink } from 'react-router-dom';
+import Photography from '../../images/photography';
+import { useState } from 'react';
 
 function LogInPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function login(e) {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+
+    fetch('http://localhost:5007/api/users/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user),
+    }).then(() => {
+      console.log('login was successful!');
+    });
+  }
+
+  console.log(password);
+  console.log(email);
+
   return (
     <>
-      <StyledForm>
-      <PhotoBox>
-        <Photography />
-      </PhotoBox>
+      <StyledForm onSubmit={login}>
+        <PhotoBox>
+          <Photography />
+        </PhotoBox>
         <label for="email" hidden="hidden">
           Email
         </label>
-        <input type="email" name="email" placeholder="Email"></input>
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          placeholder="Email"
+        ></input>
         <label for="password" hidden="hidden">
           Password
         </label>
-        <input type="password" name="password" placeholder="Password"></input>
-        <StyledLoginButton type="submit">Log In</StyledLoginButton>
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+          placeholder="Password"
+        ></input>
+        <StyledLoginButton>Log In</StyledLoginButton>
         <GoogleButton>
           <GoogleIcon />
           <p>Log In with Google</p>
         </GoogleButton>
       </StyledForm>
       <StyledText>
-        No account yet?{" "}
+        No account yet?{' '}
         <NavLink to="/register">
           <span>Sign Up</span>
         </NavLink>
