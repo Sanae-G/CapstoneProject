@@ -1,10 +1,36 @@
-import styled from "styled-components";
-import Travel from "../../images/travel";
+import styled from 'styled-components';
+import Travel from '../../images/travel';
+import { useState } from 'react';
 
 function RegisterPage() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  function register(e) {
+    e.preventDefault();
+    const newUser = {
+      username,
+      email,
+      password,
+      passwordConfirm,
+    };
+
+    fetch('http://localhost:5007/api/users/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newUser),
+    }).then(() => {
+      console.log('Sign up was successful!');
+    });
+  }
+
+  console.log(password);
+
   return (
     <>
-      <StyledForm>
+      <StyledForm onSubmit={register}>
         <PhotoBox>
           <Travel />
         </PhotoBox>
@@ -15,25 +41,43 @@ function RegisterPage() {
           <label for="email">Email</label>
           <input
             type="email"
-            name="email"
+            required
             placeholder="peter.parker@marvel.com"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
           ></input>
         </div>
         <div>
           <label for="username">Username</label>
-          <input type="text" name="username" placeholder="Peter"></input>
+          <input
+            type="text"
+            required
+            placeholder="Peter"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          ></input>
         </div>
         <div>
           <label for="password">Password</label>
-          <input type="password" name="password"></input>
+          <input
+            type="password"
+            required
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          ></input>
         </div>
 
         <div>
           <label for="password">Confirm Password</label>
-          <input type="password" name="password"></input>
+          <input
+            type="password"
+            required
+            value={passwordConfirm}
+            onChange={e => setPasswordConfirm(e.target.value)}
+          ></input>
         </div>
 
-        <StyledLoginButton type="submit">Sign Up with Email</StyledLoginButton>
+        <StyledSignUpButton>Sign Up with Email</StyledSignUpButton>
       </StyledForm>
     </>
   );
@@ -73,7 +117,7 @@ const StyledForm = styled.form`
   }
 `;
 
-const StyledLoginButton = styled.button`
+const StyledSignUpButton = styled.button`
   width: 300px;
   height: 59px;
   border-radius: 16px;
