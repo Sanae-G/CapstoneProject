@@ -9,6 +9,7 @@ function JournalPage() {
   let [moments, setMoments] = useState([]);
   let [filteredPosts, setFilteredPosts] = useState(moments);
   const [chronological, setChronological] = useState(true);
+  const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
     fetch('https://capstone-sg.herokuapp.com/api/posts')
@@ -16,6 +17,7 @@ function JournalPage() {
       .then(data => {
         setMoments(data);
         setFilteredPosts(data);
+        setIsPending(false);
       });
   }, []);
 
@@ -29,6 +31,7 @@ function JournalPage() {
         setFilteredPosts={setFilteredPosts}
       />
       <PostCard
+        isPending={isPending}
         moments={moments}
         setMoments={setMoments}
         filteredPosts={filteredPosts}

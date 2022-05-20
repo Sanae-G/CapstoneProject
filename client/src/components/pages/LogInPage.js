@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import GoogleIcon from '../../icons/google';
+
 import { NavLink } from 'react-router-dom';
-import Photography from '../../images/photography';
 import { useState } from 'react';
+import logo from '../../images/logo.png';
 
 function LogInPage() {
   const [email, setEmail] = useState('');
@@ -30,9 +30,7 @@ function LogInPage() {
   return (
     <>
       <StyledForm onSubmit={login}>
-        <PhotoBox>
-          <Photography />
-        </PhotoBox>
+        <Img src={logo}></Img>
         <label for="email" hidden="hidden">
           Email
         </label>
@@ -54,10 +52,6 @@ function LogInPage() {
           placeholder="Password"
         ></input>
         <StyledLoginButton>Log In</StyledLoginButton>
-        <GoogleButton>
-          <GoogleIcon />
-          <p>Log In with Google</p>
-        </GoogleButton>
       </StyledForm>
       <StyledText>
         No account yet?{' '}
@@ -103,26 +97,9 @@ const StyledLoginButton = styled.button`
   border-radius: 16px;
   font-size: 20px;
   border: none;
-  background-color: #6c63ff;
+  background-color: #9c51e0;
   color: #fff;
-`;
-
-const GoogleButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5%;
-  width: 300px;
-  height: 59px;
-  border-radius: 16px;
-  font-size: 20px;
-  border: 2px solid #6c63ff;
-  background-color: #fff;
-
-  img {
-    width: 50px;
-    height: auto;
-  }
+  cursor: pointer;
 `;
 
 const StyledText = styled.p`
@@ -139,8 +116,7 @@ const StyledText = styled.p`
   }
 `;
 
-const PhotoBox = styled.div`
-  padding-left: 3.8rem;
-  margin-bottom: 2rem;
-  margin-top: 4rem;
+const Img = styled.img`
+  width: 350px;
+  height: auto;
 `;

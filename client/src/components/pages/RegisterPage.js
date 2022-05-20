@@ -74,8 +74,7 @@ function RegisterPage() {
             onChange={e => setPasswordConfirm(e.target.value)}
           ></input>
         </div>
-
-        <StyledSignUpButton>Sign Up with Email</StyledSignUpButton>
+          <StyledSignUpButton>Sign Up with Email</StyledSignUpButton>
       </StyledForm>
     </>
   );
@@ -123,6 +122,8 @@ const StyledSignUpButton = styled.button`
   border: none;
   background-color: #6c63ff;
   color: #fff;
+  margin-bottom: 2rem;
+  cursor: pointer;
 `;
 
 const PhotoBox = styled.div`
