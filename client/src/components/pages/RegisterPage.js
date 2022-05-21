@@ -7,6 +7,15 @@ function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [error, setError] = useState('');
+
+  const handleErrors = async response => {
+    if (!response.ok) {
+      const message = await response.json();
+      throw Error(message.message);
+    }
+    return response.json();
+  };
 
   function register(e) {
     e.preventDefault();
@@ -21,9 +30,12 @@ function RegisterPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser),
-    }).then(() => {
-      console.log('Sign up was successful!');
-    });
+    })
+      .then(handleErrors)
+      .then(() => {})
+      .catch(error => {
+        setError(error.message);
+      });
   }
 
   return (
@@ -35,6 +47,9 @@ function RegisterPage() {
         <div>
           <h1>Sign Up</h1>
         </div>
+        <section>
+          <ErrorText>{error}</ErrorText>
+        </section>
         <div>
           <label for="email">Email</label>
           <input
@@ -74,7 +89,7 @@ function RegisterPage() {
             onChange={e => setPasswordConfirm(e.target.value)}
           ></input>
         </div>
-          <StyledSignUpButton>Sign Up with Email</StyledSignUpButton>
+        <StyledSignUpButton>Sign Up with Email</StyledSignUpButton>
       </StyledForm>
     </>
   );
@@ -112,6 +127,11 @@ const StyledForm = styled.form`
     font-weight: 600;
     width: 300px;
   }
+
+  section{
+    margin: 0 auto;
+    width: 18.75rem;
+  }
 `;
 
 const StyledSignUpButton = styled.button`
@@ -129,4 +149,10 @@ const StyledSignUpButton = styled.button`
 const PhotoBox = styled.div`
   padding-left: 3.8rem;
   margin-top: 4rem;
+`;
+
+const ErrorText = styled.p`
+  display: block;
+  color: red;
+  font-weight: bold;
 `;
