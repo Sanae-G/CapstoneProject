@@ -7,6 +7,15 @@ import logo from '../../images/logo.png';
 function LogInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleErrors = async response => {
+    if (!response.ok) {
+      const message = await response.json();
+      throw Error(message.message);
+    }
+    return response.json();
+  };
 
   function login(e) {
     e.preventDefault();
@@ -19,10 +28,12 @@ function LogInPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
-    }).then(() => {
-      console.log('login was successful!');
+    }).then(handleErrors)
+    .then(() => {})
+    .catch(error => {
+      setError(error.message);
     });
-  }
+}
 
   console.log(password);
   console.log(email);
@@ -31,6 +42,9 @@ function LogInPage() {
     <>
       <StyledForm onSubmit={login}>
         <Img src={logo}></Img>
+        <section>
+          <ErrorText>{error}</ErrorText>
+        </section>
         <label for="email" hidden="hidden">
           Email
         </label>
@@ -119,4 +133,10 @@ const StyledText = styled.p`
 const Img = styled.img`
   width: 350px;
   height: auto;
+`;
+
+const ErrorText = styled.p`
+  display: block;
+  color: red;
+  font-weight: bold;
 `;
