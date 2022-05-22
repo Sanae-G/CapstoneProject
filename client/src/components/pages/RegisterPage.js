@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Travel from '../../images/travel';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterPage() {
   const [username, setUsername] = useState('');
@@ -8,6 +9,7 @@ function RegisterPage() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleErrors = async response => {
     if (!response.ok) {
@@ -32,7 +34,9 @@ function RegisterPage() {
       body: JSON.stringify(newUser),
     })
       .then(handleErrors)
-      .then(() => {})
+      .then(() => {
+        navigate('/');
+      })
       .catch(error => {
         setError(error.message);
       });
@@ -128,7 +132,7 @@ const StyledForm = styled.form`
     width: 300px;
   }
 
-  section{
+  section {
     margin: 0 auto;
     width: 18.75rem;
   }

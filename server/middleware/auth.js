@@ -18,6 +18,6 @@ export const auth = async (req, res, next) => {
       next();
     }
   } catch (error) {
-    res.status(401).send('error: Your ar not logged in! Please log in to get access!');
+    res.status(401).send('error: Your are not logged in! Please log in to get access!');
   }
 };

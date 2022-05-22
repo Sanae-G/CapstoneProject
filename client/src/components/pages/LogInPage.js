@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import logo from '../../images/logo.png';
@@ -8,6 +8,7 @@ function LogInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleErrors = async response => {
     if (!response.ok) {
@@ -28,15 +29,15 @@ function LogInPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
-    }).then(handleErrors)
-    .then(() => {})
-    .catch(error => {
-      setError(error.message);
-    });
-}
-
-  console.log(password);
-  console.log(email);
+    })
+      .then(handleErrors)
+      .then(() => {
+        navigate('/');
+      })
+      .catch(error => {
+        setError(error.message);
+      });
+  }
 
   return (
     <>
