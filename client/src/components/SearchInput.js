@@ -12,7 +12,8 @@ function SearchInput({ moments, setMoments, setFilteredPosts }) {
       moments.filter(
         item =>
           item.title.toLowerCase().includes(value.toLowerCase()) ||
-          item.text.toLowerCase().includes(value.toLowerCase())
+          item.text.toLowerCase().includes(value.toLowerCase()) ||
+          item.address.toLowerCase().includes(value.toLowerCase())
       )
     );
   }

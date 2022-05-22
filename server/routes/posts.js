@@ -6,10 +6,11 @@ import {
   deletePost,
   getSinglePost,
 } from '../controller/postsController.js';
+import { auth } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', readPosts);
+router.get('/', auth, readPosts);
 
 router.get('/:id', getSinglePost);
 

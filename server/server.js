@@ -8,6 +8,8 @@ import cors from 'cors';
 
 
 import api from './routes/api.js';
+import posts from './routes/posts.js';
+import users from './routes/users.js';
 
 import connectDB from './config/db.js';
 // import Post from './models/postsModel.js';
@@ -49,6 +51,10 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Serve API
 app.use('/api', api);
+
+//local communcation with db
+app.use('/posts', posts)
+app.use('/users', users)
 
 
 

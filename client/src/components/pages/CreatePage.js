@@ -19,6 +19,8 @@ function CreatePage() {
   const [previewSource, setPreviewSource] = useState('');
   const [selectedFile, setSelectedFile] = useState();
 
+  const [isPending, setIsPending] = useState(false);
+
   const handleFileInputChange = e => {
     const file = e.target.files[0];
     previewFile(file);
@@ -36,6 +38,7 @@ function CreatePage() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsPending(true);
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
@@ -120,6 +123,7 @@ function CreatePage() {
           value={tags}
           onChange={e => setTags(e.target.value)}
         ></input>
+        {isPending && <h3>Loading...</h3>}
         <CreateButton>Keep Memory</CreateButton>
       </form>
       <CancelButton onClick={handleClick}>Forget it</CancelButton>

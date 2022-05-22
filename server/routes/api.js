@@ -1,6 +1,7 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import postsRoutes from './posts.js';
+import usersRoutes from './users.js';
 const router = express.Router();
 
 const db = [
@@ -58,6 +59,7 @@ const db = [
 
 //serve API from MongoDB
 router.use('/posts', postsRoutes);
+router.use('/users', usersRoutes);
 
 router.get('/', (req, res, next) => {
   res.status(200).json(db);

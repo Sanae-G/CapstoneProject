@@ -3,14 +3,12 @@ import styled from 'styled-components';
 
 function JournalHeader({
   color = '#FFD6BA',
-  heading = 'Exciting Trip to Morocoo',
-  period = '01.04 - 10.04.2022',
+  heading = 'MY TRAVEL JOURNAL',
 }) {
   return (
     <Header color={color}>
       <StyledImg src={decoration} />
       <h1>{heading}</h1>
-      <p>{period}</p>
     </Header>
   );
 }
@@ -20,7 +18,7 @@ export default JournalHeader;
 export const Header = styled.header`
   background-color: ${({ color }) => color};
   margin: 0;
-  height: 9.7rem;
+  height: 6rem;
   width: 100vw;
 
   h1 {
@@ -45,6 +43,6 @@ const StyledImg = styled.img`
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 2rem;
+  padding-top: 1rem;
   opacity: 40%;
 `;

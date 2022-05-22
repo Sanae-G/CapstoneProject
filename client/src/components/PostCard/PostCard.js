@@ -14,7 +14,7 @@ import styled from 'styled-components';
 import DeleteIcon from '../../icons/delete';
 import EditIcon from '../../icons/edit';
 
-function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological }) {
+function PostCard({ isPending, setMoments, filteredPosts, setFilteredPosts, chronological }) {
   function handleDeleteClick(_id) {
     fetch(`https://capstone-sg.herokuapp.com/api/posts/${_id}`, { method: 'DELETE' }).then(() => {
       fetch('https://capstone-sg.herokuapp.com/api/posts')
@@ -28,6 +28,7 @@ function PostCard({ setMoments, filteredPosts, setFilteredPosts, chronological }
 
   return (
     <StyledUnorderedList chronological={chronological}>
+      {isPending && <StyledH3>Loading...</StyledH3>}
       {filteredPosts &&
         filteredPosts.map(post => (
           <Container key={post._id}>
@@ -104,3 +105,8 @@ const IconBox = styled.div`
     cursor: pointer;
   }
 `;
+
+const StyledH3 = styled.h3`
+color: grey;
+margin: 2rem auto;
+`
